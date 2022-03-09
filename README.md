@@ -9,18 +9,18 @@ _Votre blog disposera d'un espace administrateur permettant_
     
 ## Data base :
 
-    - user
-        - id
-        - name
-        - mail
-        - password
-        - role
+- user
+    - id
+    - name
+    - mail
+    - password
+    - role
         
-    - article
-        - id
-        - title
-        - content
-        - author
+- article
+    - id
+    - title
+    - content
+    - author
     
 - comment
     - id
@@ -41,4 +41,4 @@ _Votre blog disposera d'un espace administrateur permettant_
     
     register : to valid by admin
     connection / disconnection
-    `display article : to valid by admin`
+    display article : to valid by admin
