@@ -11,7 +11,7 @@ _Votre blog disposera d'un espace administrateur permettant_
 
 - user
     - id
-    - name
+    - pseudo
     - mail
     - password
     - role
@@ -20,6 +20,7 @@ _Votre blog disposera d'un espace administrateur permettant_
     - id
     - title
     - content
+    - image
     - author
     
 - comment
@@ -30,7 +31,7 @@ _Votre blog disposera d'un espace administrateur permettant_
     
 - role
     - id
-    - name
+    - role_name
 
 ## function
 
