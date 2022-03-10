@@ -42,4 +42,7 @@ _Votre blog disposera d'un espace administrateur permettant_
     
     register : to valid by admin
     connection / disconnection
-    display article : to valid by admin
+    display article : valid by admin
+    display comment : valid by admin
+    
+    
