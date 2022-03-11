@@ -2,9 +2,15 @@
 
 require __DIR__ . '/../include.php';
 
-$page = isset($_GET['p']) ?  : 'home';
+$page = isset($_GET['p']) ? Router::clean($_GET['p']) : 'home';
 
-// page
-require __DIR__ . '/../View/partials/header.php';
-require __DIR__ . '/../View/' . $page . '.php';
-require __DIR__ . '/../View/partials/footer.php';
+$route = new Router();
+
+switch ($page){
+
+    case 'home':
+        Router::displayArticles('all');
+        break;
+    default:
+        // todo error
+}

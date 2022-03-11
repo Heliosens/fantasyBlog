@@ -14,8 +14,8 @@
         <h1>Créatures fantastiques</h1>
 
         <div id="menu">
-            <a href="">Connexion</a>
-            <a href="">Inscription</a>
-            <a href="">Déconnexion</a>
+            <a href="/index.php?p=connection">Connexion</a>
+            <a href="/index.php?p=register">Inscription</a>
+            <a href="/index.php?p=disconnection">Déconnexion</a>
         </div>
     </header>

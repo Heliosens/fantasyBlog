@@ -51,8 +51,15 @@ header h1 {
 
 section {
     display: flex;
+    justify-content: space-between;
     padding: 1rem;
     margin: 1rem;
+}
+
+section > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 h2 {
@@ -67,8 +74,8 @@ h2 {
 }
 
 #content {
+    flex-basis: 80%;
     display: flex;
-    height: 70vh;
     font-size: 1.5rem;
     border: 1px solid green;
     background-color: #ffffff;
