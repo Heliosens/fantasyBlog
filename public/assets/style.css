@@ -11,7 +11,7 @@ html {
 
 body {
     width: 100%;
-    background-color: #cffd8980;
+    background-color: #cffd8950;
 }
 
 a {
@@ -23,7 +23,7 @@ header {
     top: 0;
     width: 100%;
     padding: 1rem;
-    background-color: #cffd89;
+    background-color: #dffeb1;
 }
 
 footer {
@@ -53,16 +53,22 @@ header h1 {
 }
 
 section {
+    width: 80%;
     display: flex;
     justify-content: space-between;
     padding: 5rem 1rem;
-    margin: 1rem;
+    margin: 1rem auto;
 }
 
 section > div {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+article {
+    margin-bottom: 2rem;
+    border: green 1px dashed;
 }
 
 h2 {
@@ -117,3 +123,15 @@ span {
     display: block;
     margin: .5rem 0;
 }
+
+#userCom {
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+#userCom span {
+    flex-basis: 10%;
+}
+

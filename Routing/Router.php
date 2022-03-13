@@ -16,7 +16,7 @@ class Router
     // display articles switch between last, one, or all
     public static function displayArticles($param)
     {
-        $ctrl = new ArticleController();
+        $ctrl = new HomeController();
         switch ($param){
             case 'all' :
                 // to crtl get all articles from manager
