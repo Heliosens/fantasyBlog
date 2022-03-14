@@ -68,7 +68,7 @@ section > div {
 
 article {
     margin-bottom: 2rem;
-    border: green 1px dashed;
+
 }
 
 h2 {
@@ -129,6 +129,7 @@ span {
     display: flex;
     align-items: center;
     background-color: white;
+    border: green 1px dashed;
 }
 
 #userCom span {

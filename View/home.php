@@ -33,8 +33,8 @@
         <?php
         }
         ?>
-
     </article>
+
     <?php
      }
     ?>
