@@ -100,7 +100,7 @@ h2 {
     margin: 1rem;
 }
 
-img {
+#content img {
     height: 60vh;
     width: auto;
 }
@@ -120,5 +120,35 @@ span {
 
 #userCom span {
     flex-basis: 10%;
+}
+
+#formFrame {
+    border: 1px solid green;
+    box-shadow: darkgreen 5px 5px 5px;
+}
+
+#frameLogo > div {
+    padding: 1rem;
+    border: green 1px dashed;
+}
+
+#frameLogo {
+    text-align: center;
+}
+
+#frameLogo img {
+    /*width: 50%;*/
+    padding: 1rem;
+    border-radius: 50%;
+    background: #dffeb1;
+}
+
+/*#frame {*/
+
+/*}*/
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 

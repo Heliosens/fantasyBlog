@@ -27,4 +27,9 @@ class Router
 
         }
     }
+
+    public static function conectionForm (){
+        $ctrl = new FormController();
+        $ctrl->displayForm();
+    }
 }

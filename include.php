@@ -12,6 +12,7 @@ require __DIR__ . '/Routing/Router.php';
 require __DIR__ . '/Controller/Controller.php';
 require __DIR__ . '/Controller/HomeController.php';
 require __DIR__ . '/Controller/ArticleController.php';
+require __DIR__ . '/Controller/FormController.php';
 
 require __DIR__ . '/Model/Manager/RolesManager.php';
 require __DIR__ . '/Model/Manager/UserManager.php';

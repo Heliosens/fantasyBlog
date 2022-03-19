@@ -11,6 +11,8 @@ switch ($page){
     case 'home':
         Router::displayArticles('all');
         break;
+    case 'connection' :
+        Router::conectionForm();
     default:
         // todo error
 }
