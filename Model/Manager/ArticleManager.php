@@ -6,7 +6,7 @@ class ArticleManager
     public static function getAllArticles() : array
     {
         $articles = [];
-        $query = DB::conn()->query("SELECT * FROM article");
+        $query = DB::conn()->query("SELECT * FROM article ORDER BY id DESC");
         if($query){
             $userManager = new UserManager();
             foreach ($query->fetchAll() as $data){
@@ -21,4 +21,6 @@ class ArticleManager
         }
         return $articles;
     }
+
+//    create article from article form
 }

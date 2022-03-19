@@ -21,6 +21,7 @@
         <div>
             <span>Laissez un commentaire :</span>
             <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
+            <input type="submit" name="envoyer">
         </div>
         <span>Commentaires :</span>
         <?php
@@ -34,14 +35,8 @@
         }
         ?>
     </article>
-
     <?php
      }
     ?>
     </div>
-    <aside>
-        <div></div>
-        <div></div>
-        <div></div>
-    </aside>
 </section>
