@@ -3,7 +3,7 @@
 
 class HomeController extends Controller
 {
-    public function displayAll ($param){
+    public function displayAll (){
         $data = [];
         $articles = ArticleManager::getAllArticles();
         foreach ($articles as $article){

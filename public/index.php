@@ -9,7 +9,7 @@ $route = new Router();
 
 switch ($page){
     case 'home':
-        Router::displayArticles($param);
+        Router::displayArticles();
         break;
     case 'connection':
         Router::connectionForm();

@@ -16,11 +16,11 @@ class Router
     /**
      * @param $param
      */
-    public static function displayArticles($param)
+    public static function displayArticles()
     {
         $ctrl = new HomeController();
         // to crtl get all articles from manager
-        $ctrl->displayAll($param);
+        $ctrl->displayAll();
     }
 
     /**
@@ -47,7 +47,7 @@ class Router
 
     public static function userRegister () {
         $ctrl = new FormController();
-        $ctrl->checkForm();
+        $ctrl->checkUserForm();
     }
 
 }

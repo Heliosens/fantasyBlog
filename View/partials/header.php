@@ -16,4 +16,9 @@
             <a href="/index.php?p=register">Inscription</a>
             <a href="/index.php?p=disconnection">Déconnexion</a>
         </div>
+        <?php
+            if(isset($_SESSION)){
+                var_dump($_SESSION);
+        }
+        ?>
     </header>

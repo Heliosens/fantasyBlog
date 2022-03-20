@@ -13,18 +13,6 @@ class UserManager
         if($query){
             $data = $query->fetch();
         }
-        return $this->setUser($data);
-    }
-
-
-
-    /**
-     * @param array $data
-     * @return User
-     */
-    private function setUser(array $data): User
-    {
-        $roleManager = new RolesManager();
 
         $user = (new User())
             ->setId($data['id'])
@@ -32,6 +20,41 @@ class UserManager
             ->setEmail($data['email'])
             ->setPassword($data['password'])
             ;
-        return $user->setRoles($roleManager->getUserRoles($user));
+
+        $roles[] = RolesManager::getUserRoles($user);
+        return $user->setRoles($roles);
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public static function addUser(User &$user) :bool{
+        $stm = DB::conn()->prepare("
+            INSERT INTO user (pseudo, email, password)
+            VALUES (:pseudo, :email, :password)
+        ");
+
+        $stm->bindValue(':pseudo', $user->getPseudo());
+        $stm->bindValue(':email', $user->getEmail());
+        $stm->bindValue(':password', $user->getPassword());
+
+        $result = $stm->execute();
+        $user->setId(DB::conn()->lastInsertId());
+        if($result){
+            $role = RolesManager::getRole('user');
+            $addUserRole = DB::conn()->exec("
+                INSERT INTO user_role (user_fk, role_fk)
+                VALUES (" . $user->getId() . ", " . $role->getId() . ")
+            ");
+        }
+        return $result && $addUserRole;
+    }
+
+    public static function isAlreadyMail ($mail){
+        $result = DB::conn()->query("
+        SELECT count(*) as nbr FROM user WHERE email = " . $mail . "
+        ");
+        return $result ? $result->fetch()['nbr'] : 0;
     }
 }

@@ -7,7 +7,7 @@ class RolesManager
      * @param User $user
      * @return array
      */
-    public function getUserRoles (User $user): array
+    public static function getUserRoles (User $user): array
     {
         $roles = [];
         $id = $user->getId();
@@ -26,5 +26,17 @@ class RolesManager
         return $roles;
     }
 
+    public static function getRole (string $roleName): Role {
+        $role = new Role();
+        $query = DB::conn()->query("
+            SELECT * FROM role WHERE role_name = '" . $roleName . "'
+        ");
 
+        if($query){
+            $data = $query->fetch();
+            $role->setId($data['id']);
+            $role->setRoleName($data['role_name']);
+        }
+        return $role;
+    }
 }

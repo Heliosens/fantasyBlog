@@ -3,25 +3,25 @@
 
 class User
 {
-    private int $id;
+    private ?int $id = null;
     private string $pseudo;
     private string $email;
     private string $password;
     private array $roles;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      * @return User
      */
-    public function setId(int $id): self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;

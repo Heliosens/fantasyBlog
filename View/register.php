@@ -14,6 +14,9 @@
 
                 <label for="password" id="password">Mot de passe</label>
                 <input type="password" name="password" id="password">
+                <!--    password repeat   -->
+                <label for="password-bis" id="password-bis">Mot de passe</label>
+                <input type="password" name="password-bis" id="password-bis">
                 <div>
                     <input type="submit" name="button">
                 </div>
