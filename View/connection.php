@@ -5,8 +5,8 @@
         </div>
         <div id="frameLogo">
             <img src="/Image/logo-unicorn.png" alt="unicorn logo">
-            <form action="index.php?p=home" method="post">
-                <input type="text" name="pseudo" placeholder="Pseudo">
+            <form action="index.php?p=user-connection" method="post">
+                <input type="text" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="mot de passe">
                 <div>
                     <input type="submit" name="button">

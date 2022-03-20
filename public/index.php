@@ -20,6 +20,9 @@ switch ($page){
     case 'user-register':
         Router::userRegister();
         break;
+    case 'user-conection':
+        Router::userConnection();
+        break;
     default:
         // todo error
 }

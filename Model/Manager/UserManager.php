@@ -51,10 +51,27 @@ class UserManager
         return $result && $addUserRole;
     }
 
+    /**
+     * @param $mail
+     * @return int|mixed
+     */
     public static function isAlreadyMail ($mail){
         $result = DB::conn()->query("
         SELECT count(*) as nbr FROM user WHERE email = " . $mail . "
         ");
         return $result ? $result->fetch()['nbr'] : 0;
+    }
+
+    public static function getUserByMail ($mail): ?User {
+        $stm = DB::conn()->prepare("
+                SELECT * FROM user WHERE email = :mail
+            ");
+        $stm->bindValue(':mail', $mail);
+        $stm->execute();
+        if($stm->fetch()){
+
+        };
+
+
     }
 }

@@ -12,13 +12,18 @@
     <header>
         <h1><a href="/index.php?p=home">Créatures fantastiques</a></h1>
         <div id="menu">
-            <a href="/index.php?p=connection">Connexion</a>
-            <a href="/index.php?p=register">Inscription</a>
-            <a href="/index.php?p=disconnection">Déconnexion</a>
+            <?php
+            if(isset($_SESSION['user'])){
+                var_dump($_SESSION);?>
+                <a href="/index.php?p=disconnection">Déconnexion</a>
+            <?php
+            }
+            else {
+                ?>
+                <a href="/index.php?p=connection">Connexion</a>
+                <a href="/index.php?p=register">Inscription</a>
+            <?php
+            }
+            ?>
         </div>
-        <?php
-            if(isset($_SESSION)){
-                var_dump($_SESSION);
-        }
-        ?>
     </header>

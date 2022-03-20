@@ -14,6 +14,7 @@ class Router
     }
 
     /**
+     * display all articles
      * @param $param
      */
     public static function displayArticles()
@@ -24,7 +25,7 @@ class Router
     }
 
     /**
-     *
+     * display connection form
      */
     public static function connectionForm (){
         $ctrl = new FormController();
@@ -32,22 +33,27 @@ class Router
     }
 
     /**
-     *
+     * to verify connection data
      */
     public static function userConnection () {
-        if(isset($_POST['button'])){
-            $ctrl = new FormController();
-        }
+        $ctrl = new FormController();
+        $ctrl->checkConnectionForm();
     }
 
+    /**
+     * display register form
+     */
     public static function registerForm () {
         $ctrl = new FormController();
         $ctrl->displayForm('register');
     }
 
+    /**
+     * to verify register data
+     */
     public static function userRegister () {
         $ctrl = new FormController();
-        $ctrl->checkUserForm();
+        $ctrl->checkRegisterForm();
     }
 
 }

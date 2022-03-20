@@ -8,14 +8,17 @@ class FormController extends Controller
     }
 
     /**
+     * display register or connection
      * @param $param
      */
     public function displayForm ($param){
-                $this->render($param);
+        $this->render($param);
     }
 
-    public function checkUserForm (){
-
+    /**
+     *
+     */
+    public function checkRegisterForm (){
         if(isset($_POST['button'])){
             $result = [];
             $pseudo = $this->cleanEntries('pseudo');
@@ -68,5 +71,14 @@ class FormController extends Controller
             }
         }
         header('Location: index.php');
+    }
+
+    public function checkConnectionForm (){
+        if(isset($_POST['button'], $_POST['pseudo'], $_POST['password'])){
+            $mail = $this->cleanEntries('email');
+            $password = $_POST['password'];
+
+            if($result && $result['password'] == $password);
+        }
     }
 }
