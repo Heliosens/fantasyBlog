@@ -10,9 +10,7 @@
 </head>
 <body>
     <header>
-
-        <h1>Créatures fantastiques</h1>
-
+        <h1><a href="/index.php?p=home">Créatures fantastiques</a></h1>
         <div id="menu">
             <a href="/index.php?p=connection">Connexion</a>
             <a href="/index.php?p=register">Inscription</a>

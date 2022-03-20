@@ -11,7 +11,10 @@ html {
 
 body {
     width: 100%;
-    background-color: #cffd8950;
+    background-image: url("/Image/poster.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 a {
@@ -22,16 +25,17 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 0;
     background-color: #dffeb1;
+    box-shadow: #008000c0 0 5px 5px;
 }
 
-footer {
-    border-top: 1px solid green;
+header, footer, #menu, section, section > div,
+#content, #userCom, #formFrame, form {
+    display: flex;
 }
 
 header, footer {
-    display: flex;
     justify-content: space-around;
     text-align: center;
 }
@@ -40,8 +44,8 @@ header h1 {
     flex-basis: 70%;
 }
 
-#menu {
-    display: flex;
+header a {
+    color: black;
 }
 
 #menu a {
@@ -54,41 +58,33 @@ header h1 {
 
 section {
     width: 80%;
-    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 5rem 1rem;
+    padding: 3rem 1rem;
     margin: 1rem auto;
 }
 
-section > div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
 article {
-    margin-bottom: 2rem;
-
+    padding: 2rem 1rem;
+    margin-bottom: 3rem;
+    background-color: #cffd89;
 }
 
-h2 {
+#content h2 {
     text-align: center;
     padding-bottom: 1rem;
     border-bottom: green 1px solid;
 }
 
-
-#frame {
-    flex-basis: 80%;
-    display: flex;
-    flex-direction: column;
+#frameArt {
     font-size: 1.5rem;
-    border: 1px solid green;
     background-color: #ffffff;
+    padding: 1rem;
+    border: 1px solid green;
 }
 
-#content {
-    display: flex;
+#content div {
+    margin: 1rem;
 }
 
 #content p {
@@ -96,59 +92,90 @@ h2 {
     border-bottom: green 1px solid;
 }
 
-#content div {
-    margin: 1rem;
-}
-
 #content img {
     height: 60vh;
     width: auto;
 }
 
-span {
+#frameArt span {
     display: block;
-    margin: .5rem 0;
+}
+
+#frameCom {
+    padding: 1rem;
+}
+
+form {
+    flex-direction: column;
+}
+
+#frameCom > div{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#frameCom form input {
+    margin: 1rem 0;
+    padding: .2rem;
 }
 
 #userCom {
     padding: .5rem;
-    display: flex;
     align-items: center;
     background-color: white;
-    border: green 1px dashed;
+    border-top: green 1px dashed;
 }
 
-#userCom span {
-    flex-basis: 10%;
+footer {
+    padding: 1rem 0;
+    background: #cffd89;
+    font-size: 1.5rem;
 }
+
+    /* connection */
 
 #formFrame {
+    width: 40%;
+    margin: 4% auto;
+    background-color: #cffd89;
+    flex-direction: column;
+}
+
+#formFrame > div {
+    margin: 1rem;
+    background: white;
     border: 1px solid green;
-    box-shadow: darkgreen 5px 5px 5px;
 }
 
-#frameLogo > div {
-    padding: 1rem;
-    border: green 1px dashed;
-}
-
-#frameLogo {
+#separator, #frameLogo {
     text-align: center;
 }
 
 #frameLogo img {
-    /*width: 50%;*/
     padding: 1rem;
-    border-radius: 50%;
-    background: #dffeb1;
+    width: 35%;
 }
 
-/*#frame {*/
+#wave {
+    height: 4rem;
+}
 
-/*}*/
+#formFrame {
+    padding: 1rem;
+    text-align: center;
+}
 
-form {
-    display: flex;
-    flex-direction: column;
+#title {
+    font-size: 1.5rem;
+    padding: 2rem;
+    justify-content: center;
+}
+
+#formFrame form input {
+    margin: 2rem;
+    padding: .5rem;
+    border: green 1px dashed;
+    background: #cffd8980;
 }
 

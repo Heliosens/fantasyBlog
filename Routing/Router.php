@@ -13,23 +13,41 @@ class Router
         return $param !== null ? strtolower(trim(strip_tags($param))) : null;
     }
 
-    // display articles switch between last, one, or all
+    /**
+     * @param $param
+     */
     public static function displayArticles($param)
     {
         $ctrl = new HomeController();
-        switch ($param){
-            case 'all' :
-                // to crtl get all articles from manager
-                $ctrl->displayAll();
-                break;
-            default :
-               // (new Controller($this->pdo))->render('home');
+        // to crtl get all articles from manager
+        $ctrl->displayAll($param);
+    }
 
+    /**
+     *
+     */
+    public static function connectionForm (){
+        $ctrl = new FormController();
+        $ctrl->displayForm('connection');
+    }
+
+    /**
+     *
+     */
+    public static function userConnection () {
+        if(isset($_POST['button'])){
+            $ctrl = new FormController();
         }
     }
 
-    public static function conectionForm (){
+    public static function registerForm () {
         $ctrl = new FormController();
-        $ctrl->displayForm();
+        $ctrl->displayForm('register');
     }
+
+    public static function userRegister () {
+        $ctrl = new FormController();
+        $ctrl->checkForm();
+    }
+
 }

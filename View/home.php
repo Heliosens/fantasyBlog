@@ -1,10 +1,9 @@
 <section>
-    <div>
     <?php
     foreach ($data as $item) {
     ?>
     <article>
-        <div id="frame">
+        <div id="frameArt">
             <div id="content">
                 <div>
                     <h2><?= $item['article']->getTitle() ?></h2>
@@ -18,25 +17,37 @@
                 <span>par : <?= $item['article']->getAuthor()->getPseudo() ?></span>
             </div>
         </div>
-        <div>
-            <span>Laissez un commentaire :</span>
-            <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
-            <input type="submit" name="envoyer">
+        <div id="frameCom">
+            <div>
+                <span>Laissez un commentaire :</span>
+                <form action="">
+                    <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
+                    <div>
+                        <input type="submit" name="envoyer">
+                    </div>
+                </form>
+            </div>
+            <div>
+                <span>Commentaires :</span>
+                <?php
+                foreach ($item['comm'] as $comment){
+                    ?>
+                    <div id="userCom">
+                        <div>
+                            <span><?=$comment->getAuthor()->getPseudo()?></span>
+                            <p><?=$comment->getContent()?></p>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
         </div>
-        <span>Commentaires :</span>
-        <?php
-        foreach ($item['comm'] as $comment){
-        ?>
-        <div id="userCom">
-            <span><?=$comment->getAuthor()->getPseudo()?></span>
-            <p><?=$comment->getContent()?></p>
+        <div id="separator">
+            <img id="wave" src="/Image/wave.png" alt="">
         </div>
-        <?php
-        }
-        ?>
     </article>
     <?php
      }
     ?>
-    </div>
 </section>

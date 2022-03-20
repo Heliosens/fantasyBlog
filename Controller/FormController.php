@@ -3,7 +3,17 @@
 
 class FormController extends Controller
 {
-    public function displayForm (){
-        $this->render('connection');
+    /**
+     * @param $param
+     */
+    public function displayForm ($param){
+                $this->render($param);
     }
+
+    public function checkForm (){
+        if(isset($_POST['button'])){
+
+        }
+    }
+
 }
