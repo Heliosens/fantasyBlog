@@ -6,7 +6,8 @@ class ArticleManager
     public static function getAllArticles() : array
     {
         $articles = [];
-        $query = DB::conn()->query("SELECT * FROM article ORDER BY id DESC");
+        $query = DB::conn()->query("
+            SELECT * FROM article ORDER BY id DESC");
         if($query){
             $userManager = new UserManager();
             foreach ($query->fetchAll() as $data){

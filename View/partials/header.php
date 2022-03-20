@@ -26,4 +26,9 @@
             }
             ?>
         </div>
+        <div id="error">
+            <?php foreach ($_SESSION['error'] as $ans){
+                echo $ans;
+            } ?>
+        </div>
     </header>

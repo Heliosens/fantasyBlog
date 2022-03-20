@@ -51,27 +51,36 @@ class UserManager
         return $result && $addUserRole;
     }
 
+//    /**
+//     * @param $mail
+//     * @return int|mixed
+//     */
+//    public static function isAlreadyMail ($mail){
+//        $result = DB::conn()->query("
+//        SELECT count(*) as nbr FROM user WHERE email = $mail
+//        ");
+//        return $result ? $result->fetch()['nbr'] : 0;
+//    }
+
     /**
      * @param $mail
-     * @return int|mixed
+     * @return User|null
      */
-    public static function isAlreadyMail ($mail){
-        $result = DB::conn()->query("
-        SELECT count(*) as nbr FROM user WHERE email = " . $mail . "
-        ");
-        return $result ? $result->fetch()['nbr'] : 0;
-    }
-
     public static function getUserByMail ($mail): ?User {
-        $stm = DB::conn()->prepare("
-                SELECT * FROM user WHERE email = :mail
+        $query = DB::conn()->query("
+            SELECT * FROM user WHERE email = $mail
             ");
-        $stm->bindValue(':mail', $mail);
-        $stm->execute();
-        if($stm->fetch()){
-
-        };
-
+        $user = new User();
+        if($query){
+            $result = $query->fetch();
+            $user->setId($result['id'])
+                ->setPseudo($result['pseudo'])
+                ->setEmail($result['email'])
+                ->setPassword($result['password'])
+                ;
+            $user->setRoles(RolesManager::getUserRoles($user));
+            return $user;
+        }
 
     }
 }

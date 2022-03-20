@@ -16,7 +16,7 @@ class FormController extends Controller
     }
 
     /**
-     *
+     * verify register data
      */
     public function checkRegisterForm (){
         if(isset($_POST['button'])){
@@ -28,20 +28,20 @@ class FormController extends Controller
 
             $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
             if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
-                $result[] = ["error" => "L'adresse email n'est pas valide"];
+                $result[] = "L'adresse email n'est pas valide";
             }
 
             if(strlen($pseudo) < 2 ) {
-                $result[] = ["error" => "Le pseudo n'est pas assez long"];
+                $result[] = "Le pseudo n'est pas assez long";
             }
 
             if($password !== $passwordBis){
-                $result[] = ["error" => "Les mots de passe ne sont pas identiques"];
+                $result[] = "Les mots de passe ne sont pas identiques";
             }
 
-            if(!preg_match('/^(?=.*[!@#$%^&*-\])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/', $password)) {
+            if(!preg_match('/^(?=.*[!+@#$%^&*-\])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/', $password)) {
                 // Le password ne correspond pas au critère.
-                $result[] = ["error" => "Le password ne correpsond pas au critère"];
+                $result[] = "Le password ne correpsond pas au critère";
             }
 
             if(count($result) > 0){
@@ -56,29 +56,46 @@ class FormController extends Controller
                     ->setRoles([$role])
                     ;
                 // check if mail existe
-                if(UserManager::isAlreadyMail($mail)){
-                    $_SESSION['error'] = ['error' => "cette email existe déjà"];
-                }
-                UserManager::addUser($user);
-                if($user->getId() !== null){
-                    $_SESSION['success'] = "Votre compte a bien été créé";
-                    $_SESSION['error'] = [];
+//                if(UserManager::isAlreadyMail($mail)){
+//                    $_SESSION['error'] = "cette email existe déjà";
+//                }
+//                else {
+                    UserManager::addUser($user);
+                    if($user->getId() !== null){
+                        $_SESSION['success'] = "Votre compte a bien été créé";
+                        $_SESSION['error'] = [];
+                        $_SESSION['user'] = $user->getPseudo();
+                    }
+                    else {
+                        $_SESSION['error'] = "Une erreur s'est produite";
+                    }
+//                }
+            }
+            header('Location: index.php');
+        }
+    }
+
+    /**
+     * verify password
+     */
+    public function checkConnectionForm (){
+        if(isset($_POST['button'], $_POST['email'], $_POST['password'])){
+            $mail = $this->cleanEntries('email');
+            $password = $_POST['password'];
+
+            $user = UserManager::getUserByMail($mail);
+            print_r($user);
+            if($user === null){
+                $_SESSION['error'] = "Email et/ou mot de passe incorrect";
+            }
+            else{
+                if(password_verify($password, $user->getPassword())){
                     $_SESSION['user'] = $user->getPseudo();
-                }
-                else {
-                    $_SESSION['error'] = ['error' => "Une erreur s'est produite"];
+
                 }
             }
         }
         header('Location: index.php');
     }
 
-    public function checkConnectionForm (){
-        if(isset($_POST['button'], $_POST['pseudo'], $_POST['password'])){
-            $mail = $this->cleanEntries('email');
-            $password = $_POST['password'];
-
-            if($result && $result['password'] == $password);
-        }
-    }
 }
