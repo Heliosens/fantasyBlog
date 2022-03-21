@@ -5,7 +5,7 @@ class HomeController extends Controller
 {
     private static function isUserConnected()
     {
-        return isset($_SESSION['user']) && null !== ($_SESSION['user'])->getId();
+        return isset($_SESSION['user']);
     }
 
     /**
@@ -34,6 +34,6 @@ class HomeController extends Controller
             // TODO modifier le cookie de session et mettre une valeur négative.
 
         }
-        $this->render('home/index');
+        header('Location: index.php');
     }
 }

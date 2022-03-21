@@ -91,11 +91,10 @@ class FormController extends Controller
             else{
                 if(password_verify($password, $user->getPassword())){
                     $_SESSION['user'] = $user->getPseudo();
-
+                    $_SESSION['id'] = $user->getId();
                 }
             }
         }
         header('Location: index.php');
     }
-
 }

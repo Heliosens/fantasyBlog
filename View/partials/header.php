@@ -15,13 +15,13 @@
             <?php
             if(isset($_SESSION['user'])){
                 ?>
-                <a href="/index.php?p=form&a=disconnect">Déconnexion</a>
+                <a href="/index.php?p=disconnect">Déconnexion</a>
             <?php
             }
             else {
                 ?>
-                <a href="/index.php?p=form&a=connectionForm">Connexion</a>
-                <a href="/index.php?p=form&a=registerForm">Inscription</a>
+                <a href="/index.php?p=connection">Connexion</a>
+                <a href="/index.php?p=register">Inscription</a>
             <?php
             }
             ?>

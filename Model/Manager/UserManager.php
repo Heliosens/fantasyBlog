@@ -68,7 +68,7 @@ class UserManager
      */
     public static function getUserByMail ($mail): ?User {
         $query = DB::conn()->query("
-            SELECT * FROM user WHERE email = $mail
+            SELECT * FROM user WHERE email = '$mail'
             ");
         $user = new User();
         if($query){

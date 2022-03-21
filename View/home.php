@@ -27,21 +27,27 @@
                     </div>
                 </form>
             </div>
-            <div>
-                <span>Commentaires :</span>
-                <?php
-                foreach ($item['comm'] as $comment){
+            <?php
+                if(isset($_SESSION['user'])) {
                     ?>
-                    <div id="userCom">
-                        <div>
-                            <span><?=$comment->getAuthor()->getPseudo()?></span>
-                            <p><?=$comment->getContent()?></p>
-                        </div>
+                    <div>
+                        <span>Commentaires :</span>
+                        <?php
+                        foreach ($item['comm'] as $comment){
+                            ?>
+                            <div id="userCom">
+                                <div>
+                                    <span><?=$comment->getAuthor()->getPseudo()?></span>
+                                    <p><?=$comment->getContent()?></p>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
-                    <?php
+                <?php
                 }
-                ?>
-            </div>
+            ?>
         </div>
         <div id="separator">
             <img id="wave" src="/Image/wave.png" alt="">
