@@ -15,7 +15,6 @@ class Router
 
     /**
      * display all articles
-     * @param $param
      */
     public static function displayArticles()
     {
@@ -33,27 +32,24 @@ class Router
     }
 
     /**
-     * to verify connection data
+     * @param null $action
      */
-    public static function userConnection () {
+    public static function formRoute ($action = null){
         $ctrl = new FormController();
-        $ctrl->checkConnectionForm();
-    }
-
-    /**
-     * display register form
-     */
-    public static function registerForm () {
-        $ctrl = new FormController();
-        $ctrl->displayForm('register');
-    }
-
-    /**
-     * to verify register data
-     */
-    public static function userRegister () {
-        $ctrl = new FormController();
-        $ctrl->checkRegisterForm();
+        switch ($action) {
+            case 'connectionForm':
+                $ctrl->displayForm('connection');
+                break;
+            case 'connect':
+                $ctrl->checkConnectionForm();
+                break;
+            case 'registerForm':
+                $ctrl->checkRegisterForm();
+                break;
+            case 'register':
+                $ctrl->displayForm('register');
+                break;
+        }
     }
 
 }

@@ -14,21 +14,27 @@
         <div id="menu">
             <?php
             if(isset($_SESSION['user'])){
-                var_dump($_SESSION);?>
-                <a href="/index.php?p=disconnection">Déconnexion</a>
+                ?>
+                <a href="/index.php?p=form&a=disconnect">Déconnexion</a>
             <?php
             }
             else {
                 ?>
-                <a href="/index.php?p=connection">Connexion</a>
-                <a href="/index.php?p=register">Inscription</a>
+                <a href="/index.php?p=form&a=connectionForm">Connexion</a>
+                <a href="/index.php?p=form&a=registerForm">Inscription</a>
             <?php
             }
             ?>
         </div>
-        <div id="error">
-            <?php foreach ($_SESSION['error'] as $ans){
-                echo $ans;
+            <?php
+            if(isset($_SESSION['error'])){?>
+            <div id="error">
+            <?php
+                var_dump($_SESSION);
+                foreach ($_SESSION['error'] as $ans){
+                    echo $ans;
+                }
+                ?>
+            </div><?php
             } ?>
-        </div>
     </header>

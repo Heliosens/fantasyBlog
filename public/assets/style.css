@@ -21,6 +21,9 @@ a {
     text-decoration-line: none;
 }
 
+  /**********/
+ /* header */
+/**********/
 header {
     position: fixed;
     top: 0;
@@ -55,6 +58,10 @@ header a {
     border-radius: 15px / 0 50%;
     background-color: #90ee9080;
 }
+
+  /********/
+ /* home */
+/********/
 
 section {
     width: 80%;
@@ -132,8 +139,9 @@ footer {
     background: #cffd89;
     font-size: 1.5rem;
 }
-
-    /* connection */
+  /********/
+ /* form */
+/********/
 
 #formFrame {
     width: 40%;
@@ -179,3 +187,12 @@ footer {
     background: #cffd8980;
 }
 
+#error {
+    position: absolute;
+    top : 7vh;
+    left: 0;
+    border: 1px solid darkgreen;
+    width: 100%;
+    padding: 1vh 0;
+    background: #cffd89;
+}

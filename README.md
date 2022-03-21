@@ -14,7 +14,6 @@ _Votre blog disposera d'un espace administrateur permettant_
     - pseudo
     - mail
     - password
-    - role
         
 - article
     - id
@@ -32,17 +31,19 @@ _Votre blog disposera d'un espace administrateur permettant_
 - role
     - id
     - role_name
-
-## function
-
-    article -> crud
-    user -> crud
-    comment -> crud
-    role -> crud
     
-    register : to valid by admin
-    connection / disconnection
-    display article : valid by admin
-    display comment : valid by admin
+- role_user
+    - id
+    - role_fk
+    - user_fk
+
+##controler :
+
+    - article -> crud
+    - user -> crud
+    - comment -> crud
+    - role -> crud
+    
+
     
     

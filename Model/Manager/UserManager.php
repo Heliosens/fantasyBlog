@@ -51,16 +51,16 @@ class UserManager
         return $result && $addUserRole;
     }
 
-//    /**
-//     * @param $mail
-//     * @return int|mixed
-//     */
-//    public static function isAlreadyMail ($mail){
-//        $result = DB::conn()->query("
-//        SELECT count(*) as nbr FROM user WHERE email = $mail
-//        ");
-//        return $result ? $result->fetch()['nbr'] : 0;
-//    }
+    /**
+     * @param $mail
+     * @return int|mixed
+     */
+    public static function isAlreadyMail ($mail){
+        $result = DB::conn()->query("
+        SELECT count(*) as nbr FROM user WHERE email = \"$mail\"
+        ");
+        return $result ? $result->fetch()['nbr'] : 0;
+    }
 
     /**
      * @param $mail
@@ -79,8 +79,7 @@ class UserManager
                 ->setPassword($result['password'])
                 ;
             $user->setRoles(RolesManager::getUserRoles($user));
-            return $user;
         }
-
+        return $user;
     }
 }
