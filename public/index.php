@@ -26,6 +26,9 @@ switch ($page){
     case 'disconnect':
         Router::disconnect();
         break;
+    case 'profile':
+        Router::profile();
+        break;
     default:
         // todo error
 }

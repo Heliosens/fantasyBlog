@@ -11,15 +11,16 @@
 <body>
     <header>
         <h1><a href="/index.php?p=home">Créatures fantastiques</a></h1>
+
+
         <div id="menu">
             <?php
             if(isset($_SESSION['user'])){
-                ?>
+            ?><a href="/index.php?p=profile"><?= $_SESSION['user'] ?></a>
                 <a href="/index.php?p=disconnect">Déconnexion</a>
             <?php
             }
-            else {
-                ?>
+            else {?>
                 <a href="/index.php?p=connection">Connexion</a>
                 <a href="/index.php?p=register">Inscription</a>
             <?php

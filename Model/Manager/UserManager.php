@@ -7,21 +7,19 @@ class UserManager
      * @param $id
      * @return User
      */
-    public function getUserById($id) :User {
+    public static function getUserById($id) :User {
         $data = new User();
         $query = DB::conn()->query("SELECT * FROM user WHERE id = $id");
         if($query){
             $data = $query->fetch();
         }
-
         $user = (new User())
             ->setId($data['id'])
             ->setPseudo($data['pseudo'])
             ->setEmail($data['email'])
             ->setPassword($data['password'])
             ;
-
-        $roles[] = RolesManager::getUserRoles($user);
+        $roles = RolesManager::getUserRoles($user);
         return $user->setRoles($roles);
     }
 

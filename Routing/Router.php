@@ -64,4 +64,9 @@ class Router
         $ctrl->logout();
     }
 
+    public static function profile (){
+        $ctrl = new UserController();
+        $ctrl->displayProfile();
+    }
+
 }

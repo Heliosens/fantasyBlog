@@ -7,43 +7,20 @@ _Votre blog disposera d'un espace administrateur permettant_
     - d'attribuer les rôles
     - supprimer / mettre à jour les utilisateurs
     
-## Data base :
+### Data base :
 
-- user
-    - id
-    - pseudo
-    - mail
-    - password
-        
-- article
-    - id
-    - title
-    - content
-    - image
-    - author
-    
-- comment
-    - id
-    - content
-    - article
-    - author
-    
-- role
-    - id
-    - role_name
-    
-- role_user
-    - id
-    - role_fk
-    - user_fk
+| user      | article    | comment   | role       | role_user |
+|-----------|------------|-----------|------------|-----------|
+| - id      | - id       | - id      | - id       | - id      |
+| - pseudo  | - title    | - content | - role_name| - role_fk |  
+| - mail    | - content  | - article |            | - user_fk |
+| - password| - image    | - author  |            |           |
+|           | - author   |           |            |           |
 
-##controler :
+### manager :
 
     - article -> crud
-    - user -> crud
     - comment -> crud
     - role -> crud
-    
+    - user -> crud
 
-    
-    

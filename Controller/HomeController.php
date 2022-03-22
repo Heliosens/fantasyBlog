@@ -5,7 +5,7 @@ class HomeController extends Controller
 {
     private static function isUserConnected()
     {
-        return isset($_SESSION['user']);
+        return isset($_SESSION['user'], $_SESSION['id']);
     }
 
     /**
@@ -28,8 +28,7 @@ class HomeController extends Controller
     {
         if(self::isUserConnected()) {
             $_SESSION['user'] = null;
-            $_SESSION['messages'] = null;
-            $_SESSION['success'] = null;
+            $_SESSION['id'] = null;
             session_destroy();
             // TODO modifier le cookie de session et mettre une valeur négative.
 
