@@ -14,59 +14,57 @@ class Router
     }
 
     /**
-     * display all articles
      * @param $param
      */
-    public static function displayArticles()
-    {
+    public static function homeCtrl ($param){
         $ctrl = new HomeController();
-        // to crtl get all articles from manager
-        $ctrl->displayAll();
+        switch ($param){
+            case 'home':
+                $ctrl->displayAll();
+                break;
+            case 'disconnect':
+                $ctrl->logout();
+                break;
+        }
     }
 
     /**
-     * display connection form
+     * @param $param
+     * @param null $type
      */
-    public static function connectionForm (){
+    public static function formCtrl ($param, $type = null){
         $ctrl = new FormController();
-        $ctrl->displayForm('connection');
+        switch ($param){
+            case 'display':
+                $ctrl->displayForm($type);
+                break;
+            case 'register':
+                $ctrl->checkRegisterForm();
+                break;
+            case 'connection':
+                $ctrl->checkConnectionForm();
+                break;
+        }
     }
 
     /**
-     * to verify connection data
+     * @param $param
      */
-    public static function userConnection () {
-        $ctrl = new FormController();
-        $ctrl->checkConnectionForm();
-    }
-
-    /**
-     * display register form
-     */
-    public static function registerForm () {
-        $ctrl = new FormController();
-        $ctrl->displayForm('register');
-    }
-
-    /**
-     * to verify register data
-     */
-    public static function userRegister () {
-        $ctrl = new FormController();
-        $ctrl->checkRegisterForm();
-    }
-
-    /**
-     * disconnection
-     */
-    public static function disconnect (){
-        $ctrl = new HomeController();
-        $ctrl->logout();
-    }
-
-    public static function profile (){
+    public static function userCtrl ($param){
         $ctrl = new UserController();
-        $ctrl->displayProfile();
+        switch ($param){
+            case 'profile':
+                $ctrl->displayProfile();
+                break;
+        }
     }
 
+    public static function artCtrl ($param){
+        $ctrl = new ArticleController();
+        switch ($param){
+            case '':
+
+                break;
+        }
+    }
 }

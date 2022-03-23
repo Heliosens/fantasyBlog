@@ -3,32 +3,31 @@ session_start();
 require __DIR__ . '/../include.php';
 
 $page = isset($_GET['p']) ? Router::clean($_GET['p']) : 'home';
-$param = isset($_GET['f']) ? Router::clean($_GET['f']) : null;
 
 $route = new Router();
 
 switch ($page){
+    case 'disconnect':
     case 'home':
-        Router::displayArticles();
-        break;
-    case 'connection':
-        Router::connectionForm();
+        Router::homeCtrl($page);
         break;
     case 'register':
-        Router::registerForm();
+    case 'connection':
+        Router::formCtrl('display', $page);
         break;
     case 'user-register':
-        Router::userRegister();
+        Router::formCtrl('register');
         break;
     case 'user-connection':
-        Router::userConnection();
-        break;
-    case 'disconnect':
-        Router::disconnect();
+        Router::formCtrl('connection');
         break;
     case 'profile':
-        Router::profile();
+        Router::userCtrl($page);
         break;
+    case 'addArticle':
+
+        break;
+
     default:
         // todo error
 }

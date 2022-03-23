@@ -12,7 +12,15 @@
                 ?>
             </p>
         </div>
-        <a href="index.php">Accueil</a>
+        <nav>
+            <ul><?php
+                echo '<pre>';
+                var_dump($_SESSION);
+                ?>
+                <li><a href="index.php?p=addArticle">Ajouter un article</a></li>
+                <li><a href="index.php">Accueil</a></li>
+            </ul>
+        </nav>
     </div>
 
 <!--    todo user :

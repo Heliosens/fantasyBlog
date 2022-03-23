@@ -11,4 +11,8 @@ class UserController extends Controller
         $data = ['user' => UserManager::getUserById($_SESSION['id'])];
         $this->render('profile', $data);
     }
+
+    public function newUser(){
+
+    }
 }

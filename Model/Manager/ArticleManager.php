@@ -3,6 +3,9 @@
 
 class ArticleManager
 {
+    /**
+     * @return array
+     */
     public static function getAllArticles() : array
     {
         $articles = [];
@@ -24,4 +27,7 @@ class ArticleManager
     }
 
 //    create article from article form
+    public function addArticle(){
+
+    }
 }
