@@ -20,7 +20,7 @@
         <div id="frameCom">
             <div>
                 <span>Laissez un commentaire :</span>
-                <form action="">
+                <form action="" method="post">
                     <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
                     <div>
                         <input type="submit" name="envoyer">

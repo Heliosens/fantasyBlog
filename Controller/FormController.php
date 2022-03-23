@@ -56,10 +56,10 @@ class FormController extends Controller
                     ->setRoles([$role])
                     ;
                 // check if mail existe
-//                if(UserManager::isAlreadyMail($mail)){
-//                    $_SESSION['error'] = "cette email existe déjà";
-//                }
-//                else {
+                if(UserManager::isAlreadyMail($mail)){
+                    $_SESSION['error'] = "cet email existe déjà";
+                }
+                else {
                     UserManager::addUser($user);
                     if($user->getId() !== null){
                         $_SESSION['success'] = "Votre compte a bien été créé";
@@ -69,7 +69,7 @@ class FormController extends Controller
                     else {
                         $_SESSION['error'] = "Une erreur s'est produite";
                     }
-//                }
+                }
             }
             header('Location: index.php');
         }

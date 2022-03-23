@@ -54,10 +54,12 @@ class UserManager
      * @return int|mixed
      */
     public static function isAlreadyMail ($mail){
-        $result = DB::conn()->query("
-        SELECT count(*) as nbr FROM user WHERE email = \"$mail\"
+        $result = DB::conn()->prepare("
+            SELECT * FROM user WHERE email = :mail
         ");
-        return $result ? $result->fetch()['nbr'] : 0;
+        $result->bindValue(':mail', $mail);
+        $result->execute();
+        return $result->fetch() ? true : false;
     }
 
     /**
