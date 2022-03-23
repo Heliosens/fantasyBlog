@@ -65,6 +65,8 @@ class FormController extends Controller
                         $_SESSION['success'] = "Votre compte a bien été créé";
                         $_SESSION['error'] = [];
                         $_SESSION['user'] = $user->getPseudo();
+                        $_SESSION['id'] = $user->getId();
+                        $_SESSION['roles'] = $user->getRoles();
                     }
                     else {
                         $_SESSION['error'] = "Une erreur s'est produite";
@@ -92,6 +94,7 @@ class FormController extends Controller
                 if(password_verify($password, $user->getPassword())){
                     $_SESSION['user'] = $user->getPseudo();
                     $_SESSION['id'] = $user->getId();
+                    $_SESSION['roles'] = $user->getRoles();
                 }
             }
         }

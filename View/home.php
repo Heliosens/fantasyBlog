@@ -18,7 +18,9 @@
             </div>
         </div>
         <div id="frameCom">
-            <div>
+            <?php
+            if(isset($_SESSION['user'])) {
+            ?><div>
                 <span>Laissez un commentaire :</span>
                 <form action="" method="post">
                     <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
@@ -27,30 +29,26 @@
                     </div>
                 </form>
             </div>
-            <?php
-                if(isset($_SESSION['user'])) {
+            <div>
+                <span>Commentaires :</span>
+                <?php
+                foreach ($item['comm'] as $comment){
                     ?>
-                    <div>
-                        <span>Commentaires :</span>
-                        <?php
-                        foreach ($item['comm'] as $comment){
-                            ?>
-                            <div id="userCom">
-                                <div>
-                                    <span><?=$comment->getAuthor()->getPseudo()?></span>
-                                    <p><?=$comment->getContent()?></p>
-                                </div>
-                            </div>
-                            <?php
-                        }
-                        ?>
+                    <div id="userCom">
+                        <div>
+                            <span><?=$comment->getAuthor()->getPseudo()?></span>
+                            <p><?=$comment->getContent()?></p>
+                        </div>
                     </div>
+                    <?php
+                }
+            ?></div>
                 <?php
                 }
             ?>
         </div>
         <div id="separator">
-            <img id="wave" src="/Image/wave.png" alt="">
+            <img src="/Image/wave.png" alt="">
         </div>
     </article>
     <?php

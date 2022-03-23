@@ -12,7 +12,6 @@
     <header>
         <h1><a href="/index.php?p=home">Créatures fantastiques</a></h1>
 
-
         <div id="menu">
             <?php
             if(isset($_SESSION['user'])){
@@ -31,10 +30,9 @@
             if(isset($_SESSION['error'])){?>
             <div id="error">
             <?php
+                echo '<pre>';
                 var_dump($_SESSION);
-                foreach ($_SESSION['error'] as $ans){
-                    echo $ans;
-                }
+                echo '<pre>';
                 ?>
             </div><?php
             } ?>
