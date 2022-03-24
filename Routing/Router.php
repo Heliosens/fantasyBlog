@@ -61,6 +61,9 @@ class Router
         }
     }
 
+    /**
+     * @param $option
+     */
     public static function artCtrl ($option){
         $ctrl = new ArticleController();
         switch ($option){
@@ -70,6 +73,14 @@ class Router
             case 'add':
                 $ctrl->newArticle();
                 break;
+        }
+    }
+
+    public static function comCrtl ($option){
+        $ctrl = new CommentController();
+        switch ($option){
+            case 'add':
+                $ctrl->newComment();
         }
     }
 }

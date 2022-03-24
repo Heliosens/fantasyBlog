@@ -28,6 +28,8 @@ switch ($page){
     case 'article':
         Router::artCtrl($option);
         break;
+    case 'comment':
+        Router::comCrtl($option);
     default:
         // todo error
 }
