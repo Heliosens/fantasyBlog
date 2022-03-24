@@ -3,25 +3,25 @@
 
 class Article
 {
-    private int $id;
+    private ?int $id = null;
     private string $title;
     private string $content;
     private string $image;
     private User $author;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      * @return Article
      */
-    public function setId(int $id): self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;

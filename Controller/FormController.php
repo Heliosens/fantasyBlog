@@ -3,10 +3,6 @@
 
 class FormController extends Controller
 {
-    public function cleanEntries ($param){
-        return trim(strip_tags($_POST[$param]));
-    }
-
     /**
      * display register or connection
      * @param $param

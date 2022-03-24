@@ -26,8 +26,24 @@ class ArticleManager
         return $articles;
     }
 
-//    create article from article form
-    public function addArticle(){
 
+    /**
+     * @param Article $article
+     * @return bool
+     */
+    public static function addArticle(Article &$article){
+        $stm = DB::conn()->prepare("
+            INSERT INTO article (title, content, image, author_fk)
+            VALUES (:title, :content, :image, :author)
+        ");
+
+        $stm->bindValue(':title', $article->getTitle());
+        $stm->bindValue(':content', $article->getContent());
+        $stm->bindValue(':image', $article->getImage());
+        $stm->bindValue(':author', $article->getAuthor()->getId());
+
+        $result = $stm->execute();
+        $article->setId(DB::conn()->lastInsertId());
+        return $result;
     }
 }

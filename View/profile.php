@@ -16,8 +16,13 @@
             <ul><?php
                 echo '<pre>';
                 var_dump($_SESSION);
+                echo '<br>';
+                var_dump($data['admin']);
+                if($data['admin']){?>
+                <li><a href="index.php?p=article&o=form">Ajouter un article</a></li>
+                <?php
+                }
                 ?>
-                <li><a href="index.php?p=add-article">Ajouter un article</a></li>
                 <li><a href="index.php">Accueil</a></li>
             </ul>
         </nav>

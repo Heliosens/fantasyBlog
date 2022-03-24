@@ -27,7 +27,7 @@
             ?>
         </div>
             <?php
-            if(isset($_SESSION['error'])){?>
+            if(isset($_SESSION['error']) || isset($_SESSION['success'])){?>
             <div id="error">
             <?php
                 echo '<pre>';

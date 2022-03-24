@@ -3,10 +3,6 @@
 
 class HomeController extends Controller
 {
-    private static function isUserConnected()
-    {
-        return isset($_SESSION['user']);
-    }
 
     /**
      *
@@ -26,7 +22,7 @@ class HomeController extends Controller
      */
     public function logout(): void
     {
-        if(self::isUserConnected()) {
+        if($this->isUserConnected()) {
             $_SESSION['success'] = null;
             $_SESSION['error'] = null;
             $_SESSION['user'] = null;

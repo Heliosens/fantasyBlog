@@ -61,11 +61,14 @@ class Router
         }
     }
 
-    public static function artCtrl ($param){
+    public static function artCtrl ($option){
         $ctrl = new ArticleController();
-        switch ($param){
-            case 'add-article':
-                $ctrl->addArticle();
+        switch ($option){
+            case 'form':
+                $ctrl->formArticle();
+                break;
+            case 'add':
+                $ctrl->newArticle();
                 break;
         }
     }

@@ -3,6 +3,7 @@ session_start();
 require __DIR__ . '/../include.php';
 
 $page = isset($_GET['p']) ? Router::clean($_GET['p']) : 'home';
+$option = isset($_GET['o']) ? Router::clean($_GET['o']) : null;
 
 $route = new Router();
 
@@ -24,8 +25,8 @@ switch ($page){
     case 'profile':
         Router::userCtrl($page);
         break;
-    case 'add-article':
-        Router::artCtrl($page);
+    case 'article':
+        Router::artCtrl($option);
         break;
     default:
         // todo error
