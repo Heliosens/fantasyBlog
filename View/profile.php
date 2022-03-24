@@ -17,7 +17,7 @@
                 echo '<pre>';
                 var_dump($_SESSION);
                 ?>
-                <li><a href="index.php?p=addArticle">Ajouter un article</a></li>
+                <li><a href="index.php?p=add-article">Ajouter un article</a></li>
                 <li><a href="index.php">Accueil</a></li>
             </ul>
         </nav>

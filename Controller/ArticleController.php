@@ -3,7 +3,8 @@
 
 class ArticleController extends Controller
 {
-    // if connected as admin
-//    get article from manager send in db
+    public function addArticle(){
+        $this->render('addArticle');
+    }
 
 }

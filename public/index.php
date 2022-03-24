@@ -24,10 +24,9 @@ switch ($page){
     case 'profile':
         Router::userCtrl($page);
         break;
-    case 'addArticle':
-
+    case 'add-article':
+        Router::artCtrl($page);
         break;
-
     default:
         // todo error
 }

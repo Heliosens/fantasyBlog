@@ -25,6 +25,8 @@ class Router
             case 'disconnect':
                 $ctrl->logout();
                 break;
+            default :
+                $ctrl->displayAll();
         }
     }
 
@@ -62,8 +64,8 @@ class Router
     public static function artCtrl ($param){
         $ctrl = new ArticleController();
         switch ($param){
-            case '':
-
+            case 'add-article':
+                $ctrl->addArticle();
                 break;
         }
     }
