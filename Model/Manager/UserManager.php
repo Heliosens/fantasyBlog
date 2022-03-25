@@ -8,7 +8,7 @@ class UserManager
      * @return User
      */
     public static function getUserById($id) :User {
-        $data = new User();
+        $data = "";
         $query = DB::conn()->query("SELECT * FROM user WHERE id = $id");
         if($query){
             $data = $query->fetch();
@@ -21,6 +21,10 @@ class UserManager
             ;
         $roles = RolesManager::getUserRoles($user);
         return $user->setRoles($roles);
+    }
+
+    public function getUserNameById($id){
+        return DB::conn()->query("SELECT pseudo FROM user WHERE id = $id");
     }
 
     /**

@@ -3,7 +3,7 @@
 
 class Comment
 {
-    private int $id;
+    private ?int $id = null;
     private string $content;
     private Article $article;
     private User $author;
@@ -11,16 +11,16 @@ class Comment
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      * @return Comment
      */
-    public function setId(int $id): self
+    public function setId(?int $id): self
     {
         $this->id = $id;
         return $this;

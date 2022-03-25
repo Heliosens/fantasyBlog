@@ -136,10 +136,18 @@ form {
     border-top: green 1px dashed;
 }
 
+#userCom span {
+    margin-right: 1rem;
+}
+
 footer {
     padding: 1rem 0;
     background: #cffd89;
     font-size: 1.5rem;
+}
+
+#hidden {
+    display: none;
 }
   /********/
  /* form */

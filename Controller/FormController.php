@@ -82,7 +82,6 @@ class FormController extends Controller
             $password = $_POST['password'];
 
             $user = UserManager::getUserByMail($mail);
-            print_r($user);
             if($user === null){
                 $_SESSION['error'] = "Email et/ou mot de passe incorrect";
             }

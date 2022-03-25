@@ -9,8 +9,7 @@ class ArticleManager
     public static function getAllArticles() : array
     {
         $articles = [];
-        $query = DB::conn()->query("
-            SELECT * FROM article ORDER BY id DESC");
+        $query = DB::conn()->query(" SELECT * FROM article ORDER BY id DESC");
         if($query){
             $userManager = new UserManager();
             foreach ($query->fetchAll() as $data){
@@ -24,6 +23,28 @@ class ArticleManager
             }
         }
         return $articles;
+    }
+
+    /**
+     * @param $id
+     * @return Article
+     */
+    public static function getArtById($id) : Article
+    {
+        $article = "";
+        $query = DB::conn()->query(" SELECT * FROM article WHERE id = $id");
+        if($query){
+            $userManager = new UserManager();
+            $article = $query->fetch();
+            $article = (new Article())
+                ->setId($article['id'])
+                ->setImage($article['image'])
+                ->setContent($article['content'])
+                ->setTitle($article['title'])
+                ->setAuthor($userManager->getUserById($article['author_fk']) )
+            ;
+        }
+        return $article;
     }
 
 

@@ -14,6 +14,7 @@ require __DIR__ . '/Controller/HomeController.php';
 require __DIR__ . '/Controller/ArticleController.php';
 require __DIR__ . '/Controller/FormController.php';
 require __DIR__ . '/Controller/UserController.php';
+require __DIR__ . '/Controller/CommentController.php';
 
 require __DIR__ . '/Model/Manager/RolesManager.php';
 require __DIR__ . '/Model/Manager/UserManager.php';
