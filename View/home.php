@@ -10,7 +10,7 @@
                     <p><?= $item['article']->getContent() ?></p>
                 </div>
                 <div>
-                    <img src="/Image/<?= $item['article']->getImage() ?>" alt="">
+                    <img src="/upload/<?= $item['article']->getImage() ?>" alt="">
                 </div>
             </div>
             <div>
@@ -25,7 +25,7 @@
                 <form action="/index?p=comment&o=add" method="post">
                     <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
                     <div id="hidden">
-                        <input type="text" name="artNbr" value="<?= $item['article']->getId() ?>">
+                        <input type="hidden" name="artNbr" value="<?= $item['article']->getId() ?>">
                     </div>
                     <div>
                         <input type="submit" name="button">

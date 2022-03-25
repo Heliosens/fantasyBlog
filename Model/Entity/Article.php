@@ -6,7 +6,7 @@ class Article
     private ?int $id = null;
     private string $title;
     private string $content;
-    private string $image;
+    private ?string $image = null;
     private User $author;
 
     /**
@@ -66,16 +66,16 @@ class Article
     /**
      * @return string
      */
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
     /**
-     * @param string $image
+     * @param string|null $image
      * @return Article
      */
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
         return $this;

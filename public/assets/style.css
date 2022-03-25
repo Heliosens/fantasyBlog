@@ -146,9 +146,10 @@ footer {
     font-size: 1.5rem;
 }
 
-#hidden {
-    display: none;
-}
+/*#hidden {*/
+/*    display: none;*/
+/*}*/
+
   /********/
  /* form */
 /********/
@@ -160,6 +161,7 @@ footer {
     flex-direction: column;
     padding: 1rem;
     text-align: center;
+    font-size: 1rem;
 }
 
 #formFrame > div {

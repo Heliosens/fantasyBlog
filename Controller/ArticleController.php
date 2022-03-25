@@ -5,15 +5,19 @@ class ArticleController extends Controller
 {
 
     public function formArticle() {
+        if(!$_SESSION['user']){
+            header('Location: index.php');
+            die();
+        }
         $this->render('addArticle');
     }
 
     public function newArticle(){
+
         if(isset($_POST['button'])){
             var_dump($_POST);
             $title = $this->cleanEntries('title');
             $content = $this->cleanEntries('content');
-            $image = $this->cleanEntries('image-name');
             $user = UserManager::getUserById($_SESSION['id']);
 
             // todo change img name
@@ -22,9 +26,15 @@ class ArticleController extends Controller
             $article
                 ->setTitle($title)
                 ->setContent($content)
-                ->setImage($image)
                 ->setAuthor($user)
                 ;
+
+            if(isset($_FILES['artImage'])){
+                $tmp_name = $_FILES['artImage']['tmp_name'];
+                $name = $_FILES['artImage']['name'];
+                $article->setImage($name);
+                move_uploaded_file($tmp_name, 'upload/' . $name);
+            }
         }
 
         // send to db
