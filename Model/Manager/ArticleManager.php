@@ -26,10 +26,31 @@ class ArticleManager
     }
 
     /**
+     * @param int $userId
+     * @return array
+     */
+    public static function getArtList (int $userId) : array
+    {
+        $articles = [];
+        $query = DB::conn()->query(" SELECT * FROM article WHERE author_fk = $userId ORDER BY id DESC");
+        if($query){
+            foreach ($query->fetchAll() as $data){
+                $articles[] = (new Article())
+                    ->setId($data['id'])
+                    ->setTitle($data['title'])
+                    ->setContent($data['content'])
+                    ->setImage($data['image'])
+                ;
+            }
+        }
+        return $articles;
+    }
+
+    /**
      * @param $id
      * @return Article
      */
-    public static function getArtById($id) : Article
+    public static function getArtById(int $id) : Article
     {
         $article = "";
         $query = DB::conn()->query(" SELECT * FROM article WHERE id = $id");

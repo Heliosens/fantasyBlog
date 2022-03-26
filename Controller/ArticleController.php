@@ -4,6 +4,9 @@
 class ArticleController extends Controller
 {
 
+    /**
+     * display new article form
+     */
     public function formArticle() {
         if(!$_SESSION['user']){
             header('Location: index.php');
@@ -12,10 +15,12 @@ class ArticleController extends Controller
         $this->render('addArticle');
     }
 
+    /**
+     * create article, save in db
+     */
     public function newArticle(){
 
         if(isset($_POST['button'])){
-            var_dump($_POST);
             $title = $this->cleanEntries('title');
             $content = $this->cleanEntries('content');
             $user = UserManager::getUserById($_SESSION['id']);

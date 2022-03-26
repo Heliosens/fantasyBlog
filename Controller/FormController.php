@@ -87,23 +87,29 @@ class FormController extends Controller
                 $_SESSION['error'] = "Email et/ou mot de passe incorrect";
             }
             else {
-                $user = UserManager::getUserByMail($mail);
-                if($user === null){
+                // check if mail existe
+                if(!UserManager::isAlreadyMail($mail)){
                     $_SESSION['error'] = "Email et/ou mot de passe incorrect";
                 }
-                else{
-                    if(password_verify($password, $user->getPassword())){
-                        $_SESSION['user'] = $user->getPseudo();
-                        $_SESSION['id'] = $user->getId();
-                        $_SESSION['success'] = "Vous étes connecté avec success";
-                        $_SESSION['error'] = "";
-                        foreach ($user->getRoles() as $role){
-                            $roleName = $role->getRoleName();
-                            $_SESSION['roles'][] = $roleName;
-                        }
+                else {
+                    $user = UserManager::getUserByMail($mail);
+                    if($user === null){
+                        $_SESSION['error'] = "Email et/ou mot de passe incorrect";
                     }
-                    else {
-                        $_SESSION['error'] = "Pseudo ou mot de passe incorrect";
+                    else{
+                        if(password_verify($password, $user->getPassword())){
+                            $_SESSION['user'] = $user->getPseudo();
+                            $_SESSION['id'] = $user->getId();
+//                            $_SESSION['success'] = "Vous étes connecté avec success";
+                            $_SESSION['error'] = "";
+                            foreach ($user->getRoles() as $role){
+                                $roleName = $role->getRoleName();
+                                $_SESSION['roles'][] = $roleName;
+                            }
+                        }
+                        else {
+                            $_SESSION['error'] = "Pseudo ou mot de passe incorrect";
+                        }
                     }
                 }
             }
