@@ -17,16 +17,16 @@
             if(isset($_SESSION['user'])){?>
             <a href="/index.php?p=profile"><?= $_SESSION['user'] ?></a>
             <a href="/index.php?p=disconnect">Déconnexion</a>
+            <div id="error"><?php
+                echo $_SESSION['success'];
+            ?></div>
             <?php
             }
             else {?>
             <a href="/index.php?p=connection">Connexion</a>
             <a href="/index.php?p=register">Inscription</a>
-
             <?php
-            }
-            if(isset($_SESSION['error']) || isset($_SESSION['success'])){?>
-                <div id="error"><?= $_SESSION['error'] ?></div><?php
+                echo isset($_SESSION['error']) ? '<div id="error">' . $_SESSION['error'] . '</div>' : null;
             }
             ?>
         </div>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require __DIR__ . '/../include.php';
 
 $page = isset($_GET['p']) ? Router::clean($_GET['p']) : 'home';

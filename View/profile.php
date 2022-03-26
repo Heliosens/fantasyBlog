@@ -4,10 +4,11 @@
             <h2>Profile : <?=$data['user']->getPseudo()?></h2>
 
             <p>Email : <?=$data['user']->getEmail()?></p>
-            <p>Roles : <?php
+            <p>Roles :
+                <?php
                 $roles = $data['user']->getRoles();
                 foreach ($roles as $item){
-                    echo $item->getRoleName() . '<br>';
+                    echo '<span>' . $item->getRoleName() . ' </span>';
                 }
                 ?>
             </p>
@@ -27,10 +28,13 @@
             </ul>
         </nav>
     </div>
+    <div>
+
+    </div>
 
 <!--    todo user :
-            own article list with suppr / update button
-            commented article list with suppr / update button -->
+            article list with suppr / update button
+            comment list with suppr / update button -->
 <!--    todo admin :
             user list with suppr button / modify role select
             show article with suppr / update button -->

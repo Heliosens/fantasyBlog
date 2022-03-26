@@ -81,22 +81,30 @@ class FormController extends Controller
             $mail = $this->cleanEntries('email');
             $password = $_POST['password'];
 
-            $user = UserManager::getUserByMail($mail);
-            if($user === null){
+            $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
+
+            if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
                 $_SESSION['error'] = "Email et/ou mot de passe incorrect";
             }
-            else{
-                if(password_verify($password, $user->getPassword())){
-                    $_SESSION['user'] = $user->getPseudo();
-                    $_SESSION['id'] = $user->getId();
-                    $_SESSION['error'] = [];
-                    foreach ($user->getRoles() as $role){
-                        $roleName = $role->getRoleName();
-                        $_SESSION['roles'][] = $roleName;
-                    }
+            else {
+                $user = UserManager::getUserByMail($mail);
+                if($user === null){
+                    $_SESSION['error'] = "Email et/ou mot de passe incorrect";
                 }
-                else {
-                    $_SESSION['error'] = "Pseudo ou mot de passe incorrect";
+                else{
+                    if(password_verify($password, $user->getPassword())){
+                        $_SESSION['user'] = $user->getPseudo();
+                        $_SESSION['id'] = $user->getId();
+                        $_SESSION['success'] = "Vous étes connecté avec success";
+                        $_SESSION['error'] = "";
+                        foreach ($user->getRoles() as $role){
+                            $roleName = $role->getRoleName();
+                            $_SESSION['roles'][] = $roleName;
+                        }
+                    }
+                    else {
+                        $_SESSION['error'] = "Pseudo ou mot de passe incorrect";
+                    }
                 }
             }
         }
