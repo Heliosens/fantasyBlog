@@ -89,10 +89,14 @@ class FormController extends Controller
                 if(password_verify($password, $user->getPassword())){
                     $_SESSION['user'] = $user->getPseudo();
                     $_SESSION['id'] = $user->getId();
+                    $_SESSION['error'] = [];
                     foreach ($user->getRoles() as $role){
                         $roleName = $role->getRoleName();
                         $_SESSION['roles'][] = $roleName;
                     }
+                }
+                else {
+                    $_SESSION['error'] = "Pseudo ou mot de passe incorrect";
                 }
             }
         }

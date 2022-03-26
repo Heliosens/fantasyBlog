@@ -24,9 +24,7 @@
                 <span>Laissez un commentaire :</span>
                 <form action="/index?p=comment&o=add" method="post">
                     <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
-                    <div id="hidden">
-                        <input type="hidden" name="artNbr" value="<?= $item['article']->getId() ?>">
-                    </div>
+                    <input type="hidden" name="artNbr" value="<?= $item['article']->getId() ?>">
                     <div>
                         <input type="submit" name="button">
                     </div>
@@ -43,8 +41,7 @@
                     </div>
                     <?php
                 }
-            ?></div>
-                <?php
+            ?></div><?php
                 }
             ?>
         </div>

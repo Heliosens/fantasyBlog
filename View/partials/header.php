@@ -14,26 +14,20 @@
 
         <div id="menu">
             <?php
-            if(isset($_SESSION['user'])){
-            ?><a href="/index.php?p=profile"><?= $_SESSION['user'] ?></a>
-                <a href="/index.php?p=disconnect">Déconnexion</a>
+            if(isset($_SESSION['user'])){?>
+            <a href="/index.php?p=profile"><?= $_SESSION['user'] ?></a>
+            <a href="/index.php?p=disconnect">Déconnexion</a>
             <?php
             }
             else {?>
-                <a href="/index.php?p=connection">Connexion</a>
-                <a href="/index.php?p=register">Inscription</a>
+            <a href="/index.php?p=connection">Connexion</a>
+            <a href="/index.php?p=register">Inscription</a>
+
             <?php
+            }
+            if(isset($_SESSION['error']) || isset($_SESSION['success'])){?>
+                <div id="error"><?= $_SESSION['error'] ?></div><?php
             }
             ?>
         </div>
-            <?php
-            if(isset($_SESSION['error']) || isset($_SESSION['success'])){?>
-            <div id="error">
-            <?php
-                echo '<pre>';
-                var_dump($_SESSION);
-                echo '<pre>';
-                ?>
-            </div><?php
-            } ?>
     </header>

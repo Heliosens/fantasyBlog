@@ -22,9 +22,8 @@ a {
     text-decoration-line: none;
 }
 
-  /**********/
  /* header */
-/**********/
+
 header {
     position: fixed;
     top: 0;
@@ -61,15 +60,13 @@ header a {
     background-color: #90ee9080;
 }
 
-  /********/
  /* home */
-/********/
 
 section {
     width: 80%;
     flex-direction: column;
     justify-content: space-between;
-    padding: 3rem 1rem;
+    padding: 1rem;
     margin: 1rem auto;
 }
 
@@ -146,13 +143,7 @@ footer {
     font-size: 1.5rem;
 }
 
-/*#hidden {*/
-/*    display: none;*/
-/*}*/
-
-  /********/
  /* form */
-/********/
 
 #formFrame {
     width: 40%;
@@ -197,15 +188,16 @@ footer {
     justify-content: center;
 }
 
-
 #error {
     position: absolute;
-    top : 7vh;
+    top : 8vh;
     left: 0;
     border: 1px solid darkgreen;
     width: 100%;
     padding: 1vh 0;
     background: #cffd89;
+    font-size: 1.5rem;
+    box-shadow: #008000c0 0 5px 5px;
 }
 
 /* profile */
