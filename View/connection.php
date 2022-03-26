@@ -1,5 +1,5 @@
 <section>
-    <div id="formFrame">
+    <div id="frame" class="col">
         <div id="title">
             <h2>Connexion</h2>
         </div>

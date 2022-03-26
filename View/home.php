@@ -1,4 +1,4 @@
-<section>
+<section  class="col">
     <?php
     foreach ($data as $item) {
     ?>
@@ -10,7 +10,7 @@
                     <p><?= $item['article']->getContent() ?></p>
                 </div>
                 <div>
-                    <img src="/upload/<?= $item['article']->getImage() ?>" alt="">
+                    <img src="/upload/<?= $item['article']->getImage() ?>" alt="article illustration">
                 </div>
             </div>
             <div>
