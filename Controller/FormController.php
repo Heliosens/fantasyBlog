@@ -8,7 +8,7 @@ class FormController extends Controller
      * @param $param
      */
     public function displayForm ($param){
-        $this->render($param);
+        $this->isUserConnected() ? header('Location: index.php') : $this->render($param);
     }
 
     /**
