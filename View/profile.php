@@ -4,7 +4,7 @@
             <h2>Profil <?=$data['user']->getPseudo()?></h2>
         </div>
         <div class="half">
-            <h3>Utilisateur</h3>
+            <h2>Utilisateur</h2>
             <div>
                 <p>Email : <?=$data['user']->getEmail()?></p>
                 <p>Roles :
@@ -23,18 +23,23 @@
                     ?>
                 </p>
             </div>
+            <div>
+                <h3>Mes articles</h3>
+                <div id="frameList">
+                    <?php
+                    foreach ($data['artId'] as $art){
+                        echo '<p>' . $art->getTitle() . '</p>';
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
         <?php
         if($data['admin']){?>
         <div class="half">
-            <h3>Administrateur</h3>
+            <h2>Administrateur</h2>
             <div>
-                <h4>Liste des articles</h4>
-                <div id="frameList">
-                    <?php
-                    var_dump($data);
-                    ?>
-                </div>
+
             </div>
             <div>
                 <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
