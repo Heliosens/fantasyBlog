@@ -24,25 +24,34 @@
                 </p>
             </div>
         </div>
+        <?php
+        if($data['admin']){?>
         <div class="half">
             <h3>Administrateur</h3>
             <div>
-                <?php
-                if($data['admin']){?>
-                    <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
+                <h4>Liste des articles</h4>
+                <div id="frameList">
                     <?php
-                }
-                ?>
+                    var_dump($data);
+                    ?>
+                </div>
+            </div>
+            <div>
+                <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
             </div>
         </div>
-<!--        <a href="index.php">Accueil</a>-->
+            <?php
+        }
+        ?>
+        <a href="index.php">Accueil</a>
     </div>
-
 </section>
 
-<!--    todo user :
+<!--
+    todo user :
             article list with suppr / update button
-            comment list with suppr / update button -->
-<!--    todo admin :
+            comment list with suppr / update button
+    todo admin :
             user list with suppr button / modify role select
-            show article with suppr / update button -->
+            show article with suppr / update button
+-->
