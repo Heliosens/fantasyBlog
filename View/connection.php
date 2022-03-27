@@ -1,5 +1,5 @@
 <section>
-    <div id="frame" class="col">
+    <div id="frame" class="half">
         <div id="title">
             <h2>Connexion</h2>
         </div>

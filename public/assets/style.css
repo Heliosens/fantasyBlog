@@ -33,8 +33,8 @@ header {
     box-shadow: #008000c0 0 5px 5px;
 }
 
-header, footer, #menu, section, section > div,
-#content, #userCom, #formFrame, form {
+header, footer, #menu, section, #frame,
+#content, #userCom, #frame, form {
     display: flex;
 }
 
@@ -52,7 +52,7 @@ header a {
     color: black;
 }
 
-#menu a {
+#menu a, #button {
     border: 1px solid green;
     margin: .2rem;
     padding: .5rem;
@@ -64,13 +64,36 @@ header a {
 
 section {
     width: 80%;
-    flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
     margin: 1rem auto;
 }
 
-article, #userProfile{
+#frame {
+    width: 100%;
+    margin: 4% auto;
+    background-color: #cffd89;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col {
+    flex-direction: column;
+}
+
+#frame > div {
+    margin: 1rem 0;
+    background: white;
+    border: 1px solid green;
+}
+
+#frame #title {
+
+}
+
+article, .userProfile{
     padding: 2rem 1rem;
     margin-bottom: 3rem;
     background-color: #cffd89;
@@ -145,28 +168,11 @@ footer {
 
  /* form */
 
-#formFrame {
-    width: 40%;
-    margin: 4% auto;
-    background-color: #cffd89;
-    flex-direction: column;
-    padding: 1rem;
-    text-align: center;
-    font-size: 1rem;
-}
-
-#formFrame > div {
-    margin: 1rem;
-    background: white;
-    border: 1px solid green;
-}
-
-
-#formFrame form input {
+#frame form input {
     margin: 2rem;
     padding: .5rem;
     border: green 1px dashed;
-    background: #cffd8980;
+    background: #cffd8990;
 }
 
 #separator, #frameLogo {
@@ -175,7 +181,7 @@ footer {
 
 #frameLogo img {
     padding: 1rem;
-    width: 35%;
+    width: 10rem;
 }
 
 #separator img {
@@ -186,6 +192,7 @@ footer {
     font-size: 1.5rem;
     padding: 2rem;
     justify-content: center;
+    flex-basis: 100%;
 }
 
 #error {
@@ -200,20 +207,29 @@ footer {
     box-shadow: #008000c0 0 5px 5px;
 }
 
-/* profile */
+  /* profile */
 
-#userProfile {
-    flex-direction: column;
+.userProfile {
     justify-content: space-between;
-    height: 50vh;
+    align-items: center;
+    font-size: 1.2rem;
+    flex-wrap: wrap;
 }
 
-#userProfile div p {
+.userProfile div p {
     margin: 1rem 0;
 }
 
-#userProfile nav li {
+.userProfile nav li {
     list-style-type: none;
     margin: 1rem 0;
 }
 
+#frameLogo {
+    flex-basis: 100%;
+    padding: 0 5rem;
+}
+
+.half {
+    flex-basis: 49%;
+}
