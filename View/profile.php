@@ -5,6 +5,7 @@
         </div>
         <div class="half">
             <h2>Utilisateur</h2>
+<!--            user information          -->
             <div>
                 <p>Email : <?=$data['user']->getEmail()?></p>
                 <p>Roles :
@@ -13,23 +14,22 @@
                     foreach ($roles as $item){
                         echo '<span>' . $item->getRoleName() . ' </span>';
                     }
-                    echo '<pre>';
-                    //                            var_dump($data['user']);
-                    echo '<br>';
-                    //                            var_dump($data['artId']);
-                    foreach ($data['artId'] as $article){
-//                                var_dump($article->getTitle());
-                    }
                     ?>
                 </p>
             </div>
             <div>
-                <h3>Mes articles</h3>
-                <div id="frameList">
+                <h3>Mes commentaires</h3>
+<!--            current user comment list          -->
+                <div class="frameList">
                     <?php
-                    foreach ($data['artId'] as $art){
-                        echo '<p>' . $art->getTitle() . '</p>';
-                    }
+//                    foreach ($data['artId'] as $art){ ?>
+<!--                        <div>-->
+<!--                            <a href="index.php?p=home&o= --><?//=$art->getId()?><!--">--><?//=$art->getTitle()?><!--</a>-->
+<!--                            <a href="">suppr</a>-->
+<!--                            <a href="">mettre à jour</a>-->
+<!--                        </div>-->
+<!--                        --><?php
+//                    }
                     ?>
                 </div>
             </div>
@@ -39,10 +39,25 @@
         <div class="half">
             <h2>Administrateur</h2>
             <div>
-
+                <h3>Mes articles</h3>
+                <!--            current user articles list          -->
+                <div class="frameList">
+                    <?php
+                    foreach ($data['artId'] as $art){ ?>
+                        <div>
+                            <a href="index.php?p=home&o= <?=$art->getId()?>"><?=$art->getTitle()?></a>
+                            <a href="">suppr</a>
+                            <a href="">mettre à jour</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
             <div>
                 <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
+                <a id="button" href="index.php?p=list&o=user">Liste des utilisateurs</a>
+                <a id="button" href="index.php?p=list&o=article">Liste des articles</a>
             </div>
         </div>
             <?php

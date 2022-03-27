@@ -28,13 +28,12 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1rem 0;
     background-color: #dffeb1;
     box-shadow: #008000c0 0 5px 5px;
 }
 
-header, footer, #menu, section, #frame,
-#content, #userCom, #frame, form {
+header, footer, #menu, section, #frame, .flex,
+#content, #userCom, #frame, form, .frameList {
     display: flex;
 }
 
@@ -54,7 +53,7 @@ header a {
 
 #menu a, #button {
     border: 1px solid green;
-    margin: .5rem;
+    margin: 1rem;
     padding: .5rem;
     border-radius: 15px / 0 50%;
     background-color: #90ee9080;
@@ -70,7 +69,7 @@ section {
 
 #frame {
     width: 100%;
-    margin: 4% auto;
+    margin: 0 auto;
     background-color: #cffd89;
     padding: 1rem;
     text-align: center;
@@ -94,6 +93,10 @@ article, .userProfile{
     background-color: #cffd89;
 }
 
+#content {
+    justify-content: space-around;
+}
+
 #content h2 {
     text-align: center;
     padding-bottom: 1rem;
@@ -109,6 +112,10 @@ article, .userProfile{
 
 #content div {
     margin: 1rem;
+}
+
+#content div:first-child {
+    flex-basis: 60%;
 }
 
 #content p {
@@ -231,11 +238,30 @@ footer {
     padding: 1rem;
 }
 
+.half div {
+    padding: .5rem 0;
+}
+
+
 .half p, h3 {
     margin: .5rem 0;
 }
 
-#frameList {
-    min-height: 40vh;
+.frameList {
+    height: 20vh;
     overflow: auto;
+    flex-direction: column;
+    font-size: 1vw;
+}
+
+.frameList a {
+    margin: .5rem;
+}
+
+.flex {
+    justify-content: space-between;
+}
+
+.flex > div {
+    flex-basis: 50%;
 }

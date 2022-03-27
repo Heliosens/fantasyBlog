@@ -15,12 +15,13 @@ class Router
 
     /**
      * @param $param
+     * @param null $option
      */
-    public static function homeCtrl ($param){
+    public static function homeCtrl ($param, $option = null){
         $ctrl = new HomeController();
         switch ($param){
             case 'home':
-                $ctrl->displayAll();
+                $option ? $ctrl->displayId($option) : $ctrl->displayAll();
                 break;
             case 'disconnect':
                 $ctrl->logout();
@@ -50,14 +51,19 @@ class Router
     }
 
     /**
-     * @param $param
+     * @param $page
+     * @param null $option
      */
-    public static function userCtrl ($param){
+    public static function userCtrl ($page, $option = null){
         $ctrl = new UserController();
-        switch ($param){
+        switch ($page){
             case 'profile':
                 $ctrl->displayProfile();
                 break;
+            case 'list':
+                $ctrl->displayList($option);
+                break;
+
         }
     }
 
@@ -76,11 +82,16 @@ class Router
         }
     }
 
+    /**
+     * @param $option
+     */
     public static function comCrtl ($option){
         $ctrl = new CommentController();
         switch ($option){
             case 'add':
                 $ctrl->newComment();
+                break;
         }
     }
+
 }

@@ -11,7 +11,7 @@ $route = new Router();
 switch ($page){
     case 'disconnect':
     case 'home':
-        Router::homeCtrl($page);
+        Router::homeCtrl($page, $option);
         break;
     case 'register':
     case 'connection':
@@ -31,6 +31,10 @@ switch ($page){
         break;
     case 'comment':
         Router::comCrtl($option);
+        break;
+    case 'list':
+        Router::userCtrl($page, $option);
+        break;
     default:
         // todo error
 }

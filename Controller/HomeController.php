@@ -5,7 +5,7 @@ class HomeController extends Controller
 {
 
     /**
-     *
+     * display all articles
      */
     public function displayAll (){
         $data = [];
@@ -14,6 +14,17 @@ class HomeController extends Controller
             $id = $article->getId();
             $data[] = ['article' => $article, 'comm' => CommentManager::commentByArtId($id)];
         }
+        $this->render('home', $data);
+    }
+
+    /**
+     * display article by id
+     * @param $option
+     */
+    public function displayId($option)
+    {
+        $article = ArticleManager::getArtById($option);
+        $data[] = ['article' => $article, 'comm' => CommentManager::commentByArtId($option)];
         $this->render('home', $data);
     }
 
@@ -33,4 +44,5 @@ class HomeController extends Controller
         }
         header('Location: index.php');
     }
+
 }
