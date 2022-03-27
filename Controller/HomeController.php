@@ -12,7 +12,7 @@ class HomeController extends Controller
         $articles = ArticleManager::getAllArticles();
         foreach ($articles as $article){
             $id = $article->getId();
-            $data[] = ['article' => $article, 'comm' => CommentManager::commentByArtId($id)];
+            $data[] = ['article' => $article, 'comm' => CommentManager::commentByArt($id)];
         }
         $this->render('home', $data);
     }
@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function displayId($option)
     {
         $article = ArticleManager::getArtById($option);
-        $data[] = ['article' => $article, 'comm' => CommentManager::commentByArtId($option)];
+        $data[] = ['article' => $article, 'comm' => CommentManager::commentByArt($option)];
         $this->render('home', $data);
     }
 

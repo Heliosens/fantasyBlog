@@ -84,12 +84,16 @@ class Router
 
     /**
      * @param $option
+     * @param null $id
      */
-    public static function comCrtl ($option){
+    public static function comCrtl ($option, $id = null){
         $ctrl = new CommentController();
         switch ($option){
             case 'add':
                 $ctrl->newComment();
+                break;
+            case 'delete':
+                $ctrl->deleteComment($id);
                 break;
         }
     }

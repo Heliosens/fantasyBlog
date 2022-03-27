@@ -22,14 +22,20 @@
 <!--            current user comment list          -->
                 <div class="frameList">
                     <?php
-//                    foreach ($data['artId'] as $art){ ?>
-<!--                        <div>-->
-<!--                            <a href="index.php?p=home&o= --><?//=$art->getId()?><!--">--><?//=$art->getTitle()?><!--</a>-->
-<!--                            <a href="">suppr</a>-->
-<!--                            <a href="">mettre à jour</a>-->
-<!--                        </div>-->
-<!--                        --><?php
-//                    }
+                    foreach ($data['comm'] as $comment){ ?>
+                        <div>
+                            <span><?=$comment->getArticle()->getTitle()?></span> :
+                            <div class="flex">
+                                <p>"<?=$comment->getContent()?>"</p>
+                                <div>
+                                    <a href="index?p=comment&o=delete&id=<?=$comment->getId()?>">suppr</a>
+                                    <a href="">mettre à jour</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <?php
+                    }
                     ?>
                 </div>
             </div>
@@ -63,15 +69,13 @@
             <?php
         }
         ?>
-        <a href="index.php">Accueil</a>
+        <a id="button" href="index.php">Accueil</a>
     </div>
 </section>
 
 <!--
-    todo user :
-            article list with suppr / update button
-            comment list with suppr / update button
-    todo admin :
+  todo  admin :
             user list with suppr button / modify role select
-            show article with suppr / update button
+            article with suppr / update button
+        user : update comment
 -->

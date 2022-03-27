@@ -23,6 +23,10 @@ class UserManager
         return $user->setRoles($roles);
     }
 
+    /**
+     * @param $id
+     * @return false|PDOStatement
+     */
     public function getUserNameById($id){
         return DB::conn()->query("SELECT pseudo FROM user WHERE id = $id");
     }

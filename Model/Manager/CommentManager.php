@@ -4,13 +4,13 @@
 class CommentManager
 {
     /**
-     * get comment by article id
-     * @param $artId
+     * get comment by article
+     * @param $art
      * @return array
      */
-    public static function commentByArtId ($artId){
+    public static function commentByArt ($art){
         $comments = [];
-        $query = DB::conn()->query("SELECT * FROM comment WHERE article_fk = $artId");
+        $query = DB::conn()->query("SELECT * FROM comment WHERE article_fk = $art");
         if($query){
             // need user as author
             $userManager = new UserManager();
@@ -18,8 +18,29 @@ class CommentManager
                 $comments[] = (new Comment())
                     ->setId($data['id'])
                     ->setContent($data['content'])
-                    ->setAuthor($userManager->getUserById($data['author_fk']))
+                    ->setAuthor($userManager::getUserById($data['author_fk']))
                     ;
+            }
+        }
+        return $comments;
+    }
+
+    /**
+     * get comment by user
+     * @param $user
+     * @return array
+     */
+    public static function commentByUser ($user){
+        $comments = [];
+        $query = DB::conn()->query("SELECT * FROM comment WHERE author_fk = $user");
+        if($query){
+            // need article
+            $artManager = new ArticleManager();
+            foreach ($query->fetchAll() as $data){
+                $comments[] = (new Comment())
+                    ->setId($data['id'])
+                    ->setContent($data['content'])
+                    ->setArticle($artManager::getArtById($data['article_fk']));
             }
         }
         return $comments;
@@ -44,15 +65,9 @@ class CommentManager
         $comment->setId(DB::conn()->lastInsertId());
         return $result;
     }
+
+    public static function supprComment($id){
+        $sql = "DELETE FROM comment WHERE id = $id";
+        return DB::conn()->exec($sql);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-

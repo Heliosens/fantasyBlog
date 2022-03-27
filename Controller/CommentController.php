@@ -4,6 +4,9 @@
 class CommentController extends Controller
 {
 
+    /**
+     * create comment
+     */
     public function newComment()
     {
         $comment = "";
@@ -17,8 +20,18 @@ class CommentController extends Controller
         }
 
         if(CommentManager::addComment($comment)){
-            $_SESSION['succes'] = "commentaire enregistré";
+            $_SESSION['succes'] = "Commentaire enregistré";
             header('Location: index.php');
+        }
+    }
+
+    /**
+     * @param $id
+     */
+    public function deleteComment($id){
+        if(CommentManager::supprComment($id)){
+            $_SESSION['succes'] = "Commentaire supprimé";
+            header('Location: index.php?p=profile');
         }
     }
 }
