@@ -23,7 +23,7 @@ switch ($param){
         Router::userCtrl($param);
         break;
     case 'article':
-        Router::artCtrl($option);
+        Router::artCtrl($option, $id);
         break;
     case 'comment':
         Router::comCrtl($option, $id);
@@ -31,4 +31,5 @@ switch ($param){
     case 'list':
         Router::userCtrl($param, $option);
         break;
+
 }

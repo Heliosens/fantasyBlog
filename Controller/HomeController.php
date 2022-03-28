@@ -23,8 +23,7 @@ class HomeController extends Controller
      */
     public function displayId($id)
     {
-        $article = ArticleManager::getArtById($id);
-        $data[] = ['article' => $article, 'comm' => CommentManager::commentByArt($id)];
+        $data[] = ['article' => ArticleManager::getArtById($id), 'comm' => CommentManager::commentByArt($id)];
         $this->render('home', $data);
     }
 

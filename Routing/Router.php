@@ -47,6 +47,7 @@ class Router
             case 'connection':
                 $ctrl->checkConnectionForm();
                 break;
+
         }
     }
 
@@ -69,8 +70,9 @@ class Router
 
     /**
      * @param $option
+     * @param null $id
      */
-    public static function artCtrl ($option){
+    public static function artCtrl ($option, $id = null){
         $ctrl = new ArticleController();
         switch ($option){
             case 'form':
@@ -78,6 +80,9 @@ class Router
                 break;
             case 'add':
                 $ctrl->newArticle();
+                break;
+            case 'delete' :
+                $ctrl->deleteArticle($id);
                 break;
         }
     }
@@ -97,6 +102,9 @@ class Router
                 break;
             case 'update':
                 $ctrl->displayForUpdate($id);
+                break;
+            case 'up':
+                $ctrl->saveUpdate($id);
                 break;
         }
     }

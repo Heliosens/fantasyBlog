@@ -13,16 +13,32 @@ class CommentManager
         $query = DB::conn()->query("SELECT * FROM comment WHERE article_fk = $art");
         if($query){
             // need user as author
-            $userManager = new UserManager();
             foreach ($query->fetchAll() as $data){
                 $comments[] = (new Comment())
                     ->setId($data['id'])
                     ->setContent($data['content'])
-                    ->setAuthor($userManager::getUserById($data['author_fk']))
+                    ->setAuthor(UserManager::getUserById($data['author_fk']))
                     ;
             }
         }
         return $comments;
+    }
+
+    /**
+     * @param $id
+     * @return Comment
+     */
+    public static function commentById ($id){
+        $data = "";
+        $query = DB::conn()->query("SELECT * FROM comment WHERE id = $id");
+        if($query){
+            $data = $query->fetch();
+        }
+        return (new Comment())
+            ->setId($data['id'])
+            ->setContent($data['content'])
+            ->setArticle(ArticleManager::getArtById($data['article_fk']))
+            ->setAuthor(UserManager::getUserById($data['author_fk']));
     }
 
     /**
@@ -83,7 +99,8 @@ class CommentManager
             UPDATE comment SET content = :content WHERE id = :id
         ");
 
-        $stm->bindParam(':content', $_POST['content']);
+        $stm->bindValue(':content', $_POST['content']);
+        $stm->bindValue(':id', $id);
 
         return $stm->execute();
     }

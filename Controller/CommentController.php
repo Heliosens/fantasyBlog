@@ -29,7 +29,6 @@ class CommentController extends Controller
      */
     public function deleteComment($id){
         if(CommentManager::supprComment($id)){
-            $_SESSION['succes'] = "Commentaire supprimé";
             $referer = $_SERVER['HTTP_REFERER'];
             header("Location: $referer");
         }
@@ -38,11 +37,16 @@ class CommentController extends Controller
     /**
      * @param $id
      */
-    public function commentToUpdate($id){
-        CommentManager::updateComment($id);
-        header('Location: index.php?p=profile&o=update');
-        $referer = $_SERVER['HTTP_REFERER'];
-        header("Location: $referer");
+    public function displayForUpdate($id){
+        $data[] = ['comm' => CommentManager::commentById($id)];
+        $this->render('update', $data);
     }
 
+    public function saveUpdate ($id){
+        if(isset($_POST['saveUp'])){
+            CommentManager::updateComment($id);
+            $userId = ArticleManager::getArticleByComm($id)->getId();
+            header("Location: /index.php?p=home&o=art&id=$userId");
+        }
+    }
 }

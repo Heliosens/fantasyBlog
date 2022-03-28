@@ -55,19 +55,35 @@ class ArticleManager
         $article = "";
         $query = DB::conn()->query(" SELECT * FROM article WHERE id = $id");
         if($query){
-            $userManager = new UserManager();
             $article = $query->fetch();
             $article = (new Article())
                 ->setId($article['id'])
                 ->setImage($article['image'])
                 ->setContent($article['content'])
                 ->setTitle($article['title'])
-                ->setAuthor($userManager->getUserById($article['author_fk']) )
+                ->setAuthor(UserManager::getUserById($article['author_fk']) )
             ;
         }
         return $article;
     }
 
+    public static function getArticleByComm($id){
+        $article = "";
+        $query = DB::conn()->query("
+            SELECT * FROM article WHERE id = (SELECT article_fk FROM comment WHERE comment.id = $id)
+        ");
+        if($query){
+            $article = $query->fetch();
+            $article = (new Article())
+                ->setId($article['id'])
+                ->setImage($article['image'])
+                ->setContent($article['content'])
+                ->setTitle($article['title'])
+                ->setAuthor(UserManager::getUserById($article['author_fk']) )
+                ;
+        }
+        return $article;
+    }
 
     /**
      * @param Article $article
@@ -87,5 +103,13 @@ class ArticleManager
         $result = $stm->execute();
         $article->setId(DB::conn()->lastInsertId());
         return $result;
+    }
+
+    /**
+     * @param $id
+     */
+    public static function deleteArtById ($id){
+        $sql = "DELETE FROM article WHERE id = $id";
+        return DB::conn()->exec($sql);
     }
 }

@@ -48,4 +48,15 @@ class ArticleController extends Controller
             header('Location: index.php');
         }
     }
+
+    /**
+     * @param $id
+     */
+    public function deleteArticle ($id){
+        if(ArticleManager::deleteArtById($id)){
+            $referer = $_SERVER['HTTP_REFERER'];
+            header("Location: $referer");
+        }
+    }
+
 }
