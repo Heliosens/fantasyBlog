@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/DB.php';
+require __DIR__ . '/Model/DB.php';
 
 require __DIR__ . '/Model/Entity/Article.php';
 require __DIR__ . '/Model/Entity/Comment.php';
