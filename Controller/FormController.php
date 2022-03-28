@@ -5,10 +5,10 @@ class FormController extends Controller
 {
     /**
      * display register or connection
-     * @param $param
+     * @param $type
      */
-    public function displayForm ($param){
-        $this->isUserConnected() ? header('Location: index.php') : $this->render($param);
+    public function displayForm ($type){
+        $this->isUserConnected() ? header('Location: index.php') : $this->render($type);
     }
 
     /**

@@ -22,7 +22,7 @@
             if(isset($_SESSION['user'])) {
             ?><div>
                 <span>Laissez un commentaire :</span>
-                <form action="/index?p=comment&o=add" method="post">
+                <form action="/index.php?p=comment&o=add" method="post">
                     <textarea name="comment" id="comment" cols="60" rows="3" placeholder="votre commentaire"></textarea>
                     <input type="hidden" name="artNbr" value="<?= $item['article']->getId() ?>">
                     <div>
@@ -38,6 +38,12 @@
                     <div id="userCom">
                         <span><?=$comment->getAuthor()->getPseudo()?> :</span>
                         <p><?=$comment->getContent()?></p>
+                        <?php
+                            if(Controller::isAdmin() || $_SESSION['user'] === $comment->getAuthor()->getPseudo() ){?>
+                                <a href="index?p=comment&o=delete&id= <?=$comment->getId()?> ">suppr</a>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <?php
                 }

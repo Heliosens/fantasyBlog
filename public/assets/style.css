@@ -33,7 +33,7 @@ header {
 }
 
 header, footer, #menu, section, #frame, .flex,
-#content, #userCom, #frame, form, .frameList {
+#content, #userCom, #frame, #frame2, form, .frameList {
     display: flex;
 }
 
@@ -67,24 +67,41 @@ section {
     margin: 1rem auto;
 }
 
-#frame {
-    width: 100%;
+#frame, #frame2 {
     margin: 0 auto;
     background-color: #cffd89;
     padding: 1rem;
-    text-align: center;
-    font-size: 1rem;
+
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+#frame {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#frame2 {
+    font-size: 1.2rem;
+}
+
+#frame2 div {
+    /*padding: .5rem;*/
+}
+
+#frame2 #title{
+    text-align: center;
 }
 
 .col {
     flex-direction: column;
 }
 
-#frame > div {
+#frame > div, #frame2 > div, a#frameLogo {
     background: white;
     border: 1px solid green;
+    margin: .5rem;
 }
 
 article, .userProfile{
@@ -153,6 +170,7 @@ form {
 
 #userCom {
     padding: .5rem;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
     border-top: green 1px dashed;
@@ -227,9 +245,12 @@ footer {
     margin: 1rem 0;
 }
 
-#frameLogo {
+#frameLogo, #frame2 > div {
     flex-basis: 100%;
-    padding: 0 5rem;
+}
+
+#frame2 > div {
+    padding: 1rem;
 }
 
 .half {
@@ -242,7 +263,6 @@ footer {
     padding: .5rem 0;
 }
 
-
 .half p, h3 {
     margin: .5rem 0;
 }
@@ -252,7 +272,6 @@ footer {
     max-height: 55vh;
     overflow: auto;
     flex-direction: column;
-    font-size: 1vw;
 }
 
 .frameList a {

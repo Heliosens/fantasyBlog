@@ -15,12 +15,12 @@
             <?php
             if(isset($_SESSION['user'])){?>
                 <a href="/index.php?p=profile"><?= $_SESSION['user'] ?></a>
-                <a href="/index.php?p=disconnect">Déconnexion</a>
+                <a href="/index.php?o=disconnect">Déconnexion</a>
             <?php
             }
             else {?>
-                <a href="/index.php?p=connection">Connexion</a>
-                <a href="/index.php?p=register">Inscription</a>
+                <a href="/index.php?p=form&o=connection">Connexion</a>
+                <a href="/index.php?p=form&o=register">Inscription</a>
             <?php
                 echo isset($_SESSION['error']) ? '<div id="error">' . $_SESSION['error'] . '</div>' : null;
             }

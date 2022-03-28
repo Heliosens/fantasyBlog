@@ -32,7 +32,7 @@ class Controller
     /**
      * @return bool
      */
-    public function isAdmin (){
+    public static function isAdmin (){
         return in_array('admin', $_SESSION['roles']);
     }
 }

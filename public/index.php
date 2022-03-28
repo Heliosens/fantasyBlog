@@ -3,29 +3,24 @@ session_start();
 
 require __DIR__ . '/../include.php';
 
-$page = isset($_GET['p']) ? Router::clean($_GET['p']) : 'home';
+$param = isset($_GET['p']) ? Router::clean($_GET['p']) : 'home';
 $option = isset($_GET['o']) ? Router::clean($_GET['o']) : null;
 $id = isset($_GET['id']) ? Router::clean($_GET['id']) : null;
 
 $route = new Router();
 
-switch ($page){
-    case 'disconnect':
+switch ($param){
     case 'home':
-        Router::homeCtrl($page, $option);
+        Router::homeCtrl($option, $id);
         break;
-    case 'register':
-    case 'connection':
-        Router::formCtrl('display', $page);
+    case 'form':
+        Router::formCtrl('form', $option);
         break;
-    case 'user-register':
-        Router::formCtrl('register');
-        break;
-    case 'user-connection':
-        Router::formCtrl('connection');
+    case 'action':
+        Router::formCtrl($option);
         break;
     case 'profile':
-        Router::userCtrl($page);
+        Router::userCtrl($param);
         break;
     case 'article':
         Router::artCtrl($option);
@@ -34,8 +29,6 @@ switch ($page){
         Router::comCrtl($option, $id);
         break;
     case 'list':
-        Router::userCtrl($page, $option);
+        Router::userCtrl($param, $option);
         break;
-    default:
-        // todo error
 }

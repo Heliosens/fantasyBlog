@@ -14,14 +14,14 @@ class Router
     }
 
     /**
-     * @param $param
      * @param null $option
+     * @param null $id
      */
-    public static function homeCtrl ($param, $option = null){
+    public static function homeCtrl ($option, $id = null){
         $ctrl = new HomeController();
-        switch ($param){
-            case 'home':
-                $option ? $ctrl->displayId($option) : $ctrl->displayAll();
+        switch ($option){
+            case 'art':
+                $ctrl->displayId($id);
                 break;
             case 'disconnect':
                 $ctrl->logout();
@@ -32,13 +32,13 @@ class Router
     }
 
     /**
-     * @param $param
+     * @param $option
      * @param null $type
      */
-    public static function formCtrl ($param, $type = null){
+    public static function formCtrl ($option, $type = null){
         $ctrl = new FormController();
-        switch ($param){
-            case 'display':
+        switch ($option){
+            case 'form':
                 $ctrl->displayForm($type);
                 break;
             case 'register':
@@ -95,7 +95,9 @@ class Router
             case 'delete':
                 $ctrl->deleteComment($id);
                 break;
+            case 'update':
+                $ctrl->displayForUpdate($id);
+                break;
         }
     }
-
 }

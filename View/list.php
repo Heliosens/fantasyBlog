@@ -1,3 +1,9 @@
+<!--
+    list of user : Pseudo, list of comment
+    list of article : title, content, author
+
+    comment to update : author, article title, content
+-->
 <div>
     <h3>Liste des ***</h3>
     <div class="frameList">

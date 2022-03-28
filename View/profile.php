@@ -1,9 +1,9 @@
 <section>
-    <div id="frame">
+    <div id="frame2">
         <div id="title">
             <h2>Profil <?=$data['user']->getPseudo()?></h2>
         </div>
-        <div class="half">
+        <div>
             <h2>Utilisateur</h2>
 <!--            user information          -->
             <div>
@@ -23,18 +23,18 @@
                 <div class="frameList">
                     <?php
                     foreach ($data['comm'] as $comment){ ?>
-                        <div>
+                    <div>
+                        <div class="flex">
                             <span><?=$comment->getArticle()->getTitle()?></span> :
-                            <div class="flex">
-                                <p>"<?=$comment->getContent()?>"</p>
-                                <div>
-                                    <a href="index?p=comment&o=delete&id=<?=$comment->getId()?>">suppr</a>
-                                    <a href="">mettre à jour</a>
-                                </div>
+                            <p>"<?=$comment->getContent()?>"</p>
+                            <div>
+                                <a href="index?p=comment&o=delete&id=<?=$comment->getId()?>">suppr</a>
+                                <a href="index?p=comment&o=update&id=<?=$comment->getId()?>">mettre à jour</a>
                             </div>
-
                         </div>
-                        <?php
+
+                    </div>
+                    <?php
                     }
                     ?>
                 </div>
@@ -42,7 +42,7 @@
         </div>
         <?php
         if($data['admin']){?>
-        <div class="half">
+        <div>
             <h2>Administrateur</h2>
             <div>
                 <h3>Mes articles</h3>
@@ -50,26 +50,28 @@
                 <div class="frameList">
                     <?php
                     foreach ($data['artId'] as $art){ ?>
-                        <div>
-                            <a href="index.php?p=home&o= <?=$art->getId()?>"><?=$art->getTitle()?></a>
-                            <a href="">suppr</a>
-                            <a href="">mettre à jour</a>
+                        <div class="flex">
+                            <a href="index.php?p=home&o=art&id=<?=$art->getId()?>"><?=$art->getTitle()?></a>
+                            <div>
+                                <a href="index.php?p=article&o=delete&id=<?=$art->getId()?>">suppr</a>
+                                <a href="index.php?p=article&o=update&id=<?=$art->getId()?>">mettre à jour</a>
+                            </div>
                         </div>
-                        <?php
+                    <?php
                     }
                     ?>
                 </div>
             </div>
-            <div>
+            <div class="flex">
                 <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
                 <a id="button" href="index.php?p=list&o=user">Liste des utilisateurs</a>
                 <a id="button" href="index.php?p=list&o=article">Liste des articles</a>
             </div>
         </div>
-            <?php
+        <?php
         }
         ?>
-        <a id="button" href="index.php">Accueil</a>
+        <a id="frameLogo" href="index.php">Accueil</a>
     </div>
 </section>
 

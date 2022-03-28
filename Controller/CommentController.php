@@ -20,7 +20,6 @@ class CommentController extends Controller
         }
 
         if(CommentManager::addComment($comment)){
-            $_SESSION['succes'] = "Commentaire enregistré";
             header('Location: index.php');
         }
     }
@@ -31,7 +30,19 @@ class CommentController extends Controller
     public function deleteComment($id){
         if(CommentManager::supprComment($id)){
             $_SESSION['succes'] = "Commentaire supprimé";
-            header('Location: index.php?p=profile');
+            $referer = $_SERVER['HTTP_REFERER'];
+            header("Location: $referer");
         }
     }
+
+    /**
+     * @param $id
+     */
+    public function commentToUpdate($id){
+        CommentManager::updateComment($id);
+        header('Location: index.php?p=profile&o=update');
+        $referer = $_SERVER['HTTP_REFERER'];
+        header("Location: $referer");
+    }
+
 }

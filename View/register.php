@@ -5,7 +5,7 @@
         </div>
         <div id="frameLogo">
             <img src="/Image/choipeau.png" alt="hat logo">
-            <form action="index.php?p=user-register" method="post">
+            <form action="index.php?p=action&o=register" method="post">
                 <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
 
                 <input type="email" id="email" name="email" placeholder="Email">

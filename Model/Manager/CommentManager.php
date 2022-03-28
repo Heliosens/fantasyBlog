@@ -66,8 +66,25 @@ class CommentManager
         return $result;
     }
 
+    /**
+     * @param $id
+     * @return false|int
+     */
     public static function supprComment($id){
         $sql = "DELETE FROM comment WHERE id = $id";
         return DB::conn()->exec($sql);
+    }
+
+    /**
+     * @param $id
+     */
+    public static function updateComment($id){
+        $stm = DB::conn()->prepare("
+            UPDATE comment SET content = :content WHERE id = :id
+        ");
+
+        $stm->bindParam(':content', $_POST['content']);
+
+        return $stm->execute();
     }
 }
