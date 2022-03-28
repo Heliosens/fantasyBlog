@@ -52,19 +52,21 @@ class Router
     }
 
     /**
-     * @param $page
      * @param null $option
+     * @param null $id
      */
-    public static function userCtrl ($page, $option = null){
+    public static function userCtrl ($option, $id = null){
         $ctrl = new UserController();
-        switch ($page){
+        switch ($option){
             case 'profile':
                 $ctrl->displayProfile();
                 break;
             case 'list':
-                $ctrl->displayList($option);
+                $ctrl->displayList();
                 break;
-
+            case 'delete':
+                $ctrl->delUser($id);
+                break;
         }
     }
 
@@ -89,6 +91,9 @@ class Router
                 break;
             case 'up':
                 $ctrl->saveUpdate($id);
+                break;
+            case 'list':
+                $ctrl->displayList();
                 break;
         }
     }

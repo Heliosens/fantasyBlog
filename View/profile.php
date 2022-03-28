@@ -64,8 +64,8 @@
             </div>
             <div class="flex">
                 <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
-                <a id="button" href="index.php?p=list&o=user">Liste des utilisateurs</a>
-                <a id="button" href="index.php?p=list&o=article">Liste des articles</a>
+                <a id="button" href="index.php?p=user&o=list">Liste des utilisateurs</a>
+                <a id="button" href="index.php?p=article&o=list">Liste des articles</a>
             </div>
         </div>
         <?php

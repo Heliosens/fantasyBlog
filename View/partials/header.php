@@ -14,7 +14,7 @@
         <div id="menu">
             <?php
             if(isset($_SESSION['user'])){?>
-                <a href="/index.php?p=profile"><?= $_SESSION['user'] ?></a>
+                <a href="/index.php?p=user&o=profile"><?= $_SESSION['user'] ?></a>
                 <a href="/index.php?o=disconnect">Déconnexion</a>
             <?php
             }

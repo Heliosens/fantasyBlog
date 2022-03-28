@@ -72,4 +72,12 @@ class ArticleController extends Controller
             header("Location: /index.php?p=home&o=art&id=$id");
         }
     }
+
+    public function displayList(){
+        $data = [
+            'type' => 'articles',
+            'article' => ArticleManager::getAllArticles(),
+        ];
+        $this->render('list', $data);
+    }
 }

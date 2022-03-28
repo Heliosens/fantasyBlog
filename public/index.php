@@ -19,17 +19,14 @@ switch ($param){
     case 'action':
         Router::formCtrl($option);
         break;
-    case 'profile':
-        Router::userCtrl($param);
-        break;
     case 'article':
         Router::artCtrl($option, $id);
         break;
     case 'comment':
         Router::comCrtl($option, $id);
         break;
-    case 'list':
-        Router::userCtrl($param, $option);
+    case 'user':
+        Router::userCtrl($option, $id);
         break;
 
 }

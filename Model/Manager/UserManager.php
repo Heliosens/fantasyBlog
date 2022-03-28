@@ -4,6 +4,28 @@
 class UserManager
 {
     /**
+     * @return array
+     */
+    public static function getAllUser(){
+        $users = [];
+        $query = DB::conn()->query("SELECT * FROM user");
+        if($query){
+            foreach ($query->fetchAll() as $data){
+                $users[] = (new User())
+                    ->setId($data['id'])
+                    ->setPseudo($data['pseudo'])
+                    ->setEmail($data['email'])
+                    ->setPassword($data['password'])
+                ;
+            }
+        }
+        foreach ($users as $user){
+            $roles = RolesManager::getUserRoles($user);
+            $user->setRoles($roles);
+        }
+        return $users;
+    }
+    /**
      * @param $id
      * @return User
      */

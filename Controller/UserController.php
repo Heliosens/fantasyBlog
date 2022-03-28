@@ -19,23 +19,11 @@ class UserController extends Controller
     /**
     * @param $option
     */
-    public function displayList($option){
-        $data = [];
-        switch ($option){
-            case 'user':
-            $data[] = [
-                'type' => 'utilisateurs',
-            ];
-
-            break;
-            case 'article':
-            $data[] = [
-                'type' => 'articles',
-            ];
-
-            break;
-        }
-
+    public function displayList(){
+        $data = [
+            'type' => 'utilisateurs',
+            'user' => UserManager::getAllUser()
+        ];
         $this->render('list', $data);
     }
 

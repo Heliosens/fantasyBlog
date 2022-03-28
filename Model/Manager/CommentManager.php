@@ -51,12 +51,11 @@ class CommentManager
         $query = DB::conn()->query("SELECT * FROM comment WHERE author_fk = $user");
         if($query){
             // need article
-            $artManager = new ArticleManager();
             foreach ($query->fetchAll() as $data){
                 $comments[] = (new Comment())
                     ->setId($data['id'])
                     ->setContent($data['content'])
-                    ->setArticle($artManager::getArtById($data['article_fk']));
+                    ->setArticle(ArticleManager::getArtById($data['article_fk']));
             }
         }
         return $comments;
