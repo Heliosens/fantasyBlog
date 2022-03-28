@@ -25,8 +25,6 @@ class ArticleController extends Controller
             $content = $this->cleanEntries('content');
             $user = UserManager::getUserById($_SESSION['id']);
 
-            // todo change img name
-
             $article = new Article();
             $article
                 ->setTitle($title)

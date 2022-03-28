@@ -74,10 +74,3 @@
         <a id="frameLogo" href="index.php">Accueil</a>
     </div>
 </section>
-
-<!--
-  todo  admin :
-            user list with suppr button / modify role select
-            article with suppr / update button
-        user : update comment
--->
