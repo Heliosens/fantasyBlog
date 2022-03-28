@@ -1,4 +1,5 @@
 <?php
+
 foreach ($data as $item){?>
     <section>
         <div id="frame" class="half">
@@ -8,10 +9,10 @@ foreach ($data as $item){?>
 
             <div id="frameLogo">
                 <div>
-                    <span>Titre de l'article : <?=$item['comm']->getArticle()->getTitle()?></span>
+                    <span>Titre de l'article : <?=$item->getArticle()->getTitle()?></span>
                 </div>
-                <form action="/index.php?p=comment&o=up&id=<?=$item['comm']->getId()?>" method="post">
-                    <textarea name="content" id="artContent" cols="30" rows="10"><?=$item['comm']->getContent()?></textarea>
+                <form action="/index.php?p=comment&o=up&id=<?=$item->getId()?>" method="post">
+                    <textarea name="content" id="artContent" cols="30" rows="10"><?=$item->getContent()?></textarea>
                     <div>
                         <input type="submit" name="saveUp">
                     </div>

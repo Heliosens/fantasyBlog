@@ -38,8 +38,7 @@ class CommentController extends Controller
      * @param $id
      */
     public function displayForUpdate($id){
-        $data[] = ['comm' => CommentManager::commentById($id)];
-        $this->render('update', $data);
+        $this->render('update', [CommentManager::commentById($id)]);
     }
 
     /**
