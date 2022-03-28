@@ -64,6 +64,9 @@ class ArticleController extends Controller
         $this->render('addArticle', [ArticleManager::getArtById($id)]);
     }
 
+    /**
+     * @param $id
+     */
     public function saveUpdate ($id){
         if(isset($_POST['button'])){
             ArticleManager::updateArticle($id);
@@ -71,6 +74,9 @@ class ArticleController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function displayList(){
         $data = [
             'type' => 'articles',

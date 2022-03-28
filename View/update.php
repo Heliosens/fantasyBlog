@@ -22,4 +22,3 @@ foreach ($data as $item){?>
     <?php
 }
 ?>
-

@@ -17,8 +17,7 @@ class UserController extends Controller
     }
 
     /**
-    * @param $option
-    */
+     */
     public function displayList(){
         $data = [
             'type' => 'utilisateurs',
