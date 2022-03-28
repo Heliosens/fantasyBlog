@@ -93,6 +93,7 @@ class CommentManager
 
     /**
      * @param $id
+     * @return bool
      */
     public static function updateComment($id){
         $stm = DB::conn()->prepare("

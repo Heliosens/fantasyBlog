@@ -42,11 +42,14 @@ class CommentController extends Controller
         $this->render('update', $data);
     }
 
+    /**
+     * @param $id
+     */
     public function saveUpdate ($id){
         if(isset($_POST['saveUp'])){
             CommentManager::updateComment($id);
-            $userId = ArticleManager::getArticleByComm($id)->getId();
-            header("Location: /index.php?p=home&o=art&id=$userId");
+            $artId = ArticleManager::getArticleByComm($id)->getId();
+            header("Location: /index.php?p=home&o=art&id=$artId");
         }
     }
 }

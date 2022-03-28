@@ -84,6 +84,12 @@ class Router
             case 'delete' :
                 $ctrl->deleteArticle($id);
                 break;
+            case 'update' :
+                $ctrl->displayForUpdate($id);
+                break;
+            case 'up':
+                $ctrl->saveUpdate($id);
+                break;
         }
     }
 

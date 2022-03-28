@@ -59,4 +59,17 @@ class ArticleController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     */
+    public function displayForUpdate ($id){
+        $this->render('addArticle', [ArticleManager::getArtById($id)]);
+    }
+
+    public function saveUpdate ($id){
+        if(isset($_POST['button'])){
+            ArticleManager::updateArticle($id);
+            header("Location: /index.php?p=home&o=art&id=$id");
+        }
+    }
 }

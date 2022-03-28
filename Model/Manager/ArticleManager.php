@@ -107,9 +107,26 @@ class ArticleManager
 
     /**
      * @param $id
+     * @return false|int
      */
     public static function deleteArtById ($id){
         $sql = "DELETE FROM article WHERE id = $id";
         return DB::conn()->exec($sql);
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public static function updateArticle ($id){
+        $stm = DB::conn()->prepare("
+            UPDATE article SET title = :title, content = :content WHERE id = :id
+        ");
+
+        $stm->bindValue(':title', $_POST['title']);
+        $stm->bindValue(':content', $_POST['content']);
+        $stm->bindValue(':id', $id);
+
+        return $stm->execute();
     }
 }
