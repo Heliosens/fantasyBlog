@@ -5,7 +5,7 @@
         </div>
         <div id="frameLogo">
             <?php
-            if(isset($data)){?>
+            if(isset($data[0])){?>
                 <form action="/index.php?p=article&o=up&id=<?=$data[0]->getId()?>" method="post" enctype="multipart/form-data">
                     <input type="text" name="title" value="<?=$data[0]->getTitle()?>">
                     <textarea name="content" id="artContent" cols="30" rows="10"><?=$data[0]->getContent()?></textarea>
