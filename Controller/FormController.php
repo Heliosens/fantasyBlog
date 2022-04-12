@@ -100,7 +100,6 @@ class FormController extends Controller
                         if(password_verify($password, $user->getPassword())){
                             $_SESSION['user'] = $user->getPseudo();
                             $_SESSION['id'] = $user->getId();
-//                            $_SESSION['success'] = "Vous étes connecté avec success";
                             $_SESSION['error'] = "";
                             foreach ($user->getRoles() as $role){
                                 $roleName = $role->getRoleName();
