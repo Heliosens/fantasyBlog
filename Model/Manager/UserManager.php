@@ -25,6 +25,7 @@ class UserManager
         }
         return $users;
     }
+
     /**
      * @param $id
      * @return User

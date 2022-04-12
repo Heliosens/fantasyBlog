@@ -11,15 +11,14 @@ class ArticleManager
         $articles = [];
         $query = DB::conn()->query(" SELECT * FROM article ORDER BY id DESC");
         if($query){
-            $userManager = new UserManager();
             foreach ($query->fetchAll() as $data){
                 $articles[] = (new Article())
                     ->setId($data['id'])
                     ->setTitle($data['title'])
                     ->setContent($data['content'])
                     ->setImage($data['image'])
-                    ->setAuthor($userManager->getUserById($data['author_fk']))
-                    ;
+                    ->setAuthor(UserManager::getUserById($data['author_fk']))
+                ;
             }
         }
         return $articles;
@@ -52,10 +51,8 @@ class ArticleManager
      */
     public static function getArtById(int $id) : Article
     {
-        $article = "";
         $query = DB::conn()->query(" SELECT * FROM article WHERE id = $id");
-        if($query){
-            $article = $query->fetch();
+        if($article = $query->fetch()){
             $article = (new Article())
                 ->setId($article['id'])
                 ->setImage($article['image'])
@@ -67,6 +64,10 @@ class ArticleManager
         return $article;
     }
 
+    /**
+     * @param $id
+     * @return Article
+     */
     public static function getArticleByComm($id){
         $article = "";
         $query = DB::conn()->query("
@@ -80,7 +81,7 @@ class ArticleManager
                 ->setContent($article['content'])
                 ->setTitle($article['title'])
                 ->setAuthor(UserManager::getUserById($article['author_fk']) )
-                ;
+            ;
         }
         return $article;
     }

@@ -32,11 +32,21 @@ class ArticleController extends Controller
                 ->setAuthor($user)
                 ;
 
-            if(isset($_FILES['artImage'])){
-                $tmp_name = $_FILES['artImage']['tmp_name'];
-                $name = $_FILES['artImage']['name'];
-                $article->setImage($name);
-                move_uploaded_file($tmp_name, 'upload/' . $name);
+            if(isset($_FILES['artImage']) && $_FILES['artImage']['error'] === 0){
+                $maxSize = 3 * 1024 * 1024; // = 3 Mo
+                if((int)$_FILES['artImage']['size'] <= $maxSize){
+                    $tmp_name = $_FILES['artImage']['tmp_name'];    // image temporary name
+                    $infos = pathinfo($tmp_name, PATHINFO_EXTENSION);   // file extension
+                    $name = $this->createRandomName() . "." . $infos;
+                    $article->setImage($name);
+                    move_uploaded_file($tmp_name, 'upload/' . $name);
+                }
+                else{
+                    $_SESSION['error'] = "L'image est trop grande";
+                }
+            }
+            else{
+                $_SESSION['error'] = "erreur lors du chargement de l'image";
             }
         }
 
@@ -45,6 +55,18 @@ class ArticleController extends Controller
             $_SESSION['success'] = "article enregistré";
             header('Location: index.php');
         }
+    }
+
+    /**
+     * @return string
+     */
+    function createRandomName (): string {
+        try {
+            $bytes = random_bytes(15);
+        } catch (Exception $e) {
+            $bytes = openssl_random_pseudo_bytes(15);
+        }
+        return bin2hex($bytes);
     }
 
     /**
