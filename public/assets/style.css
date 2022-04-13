@@ -51,7 +51,7 @@ header a {
     color: black;
 }
 
-#menu a, #button {
+#menu a, .button {
     border: 1px solid green;
     margin: 1rem;
     padding: .5rem;
@@ -169,14 +169,25 @@ form {
 
 #userCom {
     padding: .5rem;
-    justify-content: space-between;
-    align-items: center;
     background-color: white;
     border-top: green 1px dashed;
 }
 
 #userCom span {
     margin-right: 1rem;
+    flex-basis: 10%;
+}
+
+#userCom p {
+    flex-basis: 70%;
+}
+
+#userCom a {
+    margin: 0 .5rem;
+}
+
+#userCom div {
+    flex-basis: 20%;
 }
 
 footer {
@@ -278,9 +289,7 @@ footer {
 }
 
 .flex {
+    width: 80%;
+    margin: auto;
     justify-content: space-between;
-}
-
-.flex > div {
-    flex-basis: 50%;
 }

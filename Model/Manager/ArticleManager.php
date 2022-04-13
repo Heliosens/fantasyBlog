@@ -25,6 +25,7 @@ class ArticleManager
     }
 
     /**
+     * get user articles
      * @param int $userId
      * @return array
      */
@@ -117,16 +118,18 @@ class ArticleManager
 
     /**
      * @param $id
+     * @param $name
      * @return bool
      */
-    public static function updateArticle ($id){
+    public static function updateArticle ($id, $name){
         $stm = DB::conn()->prepare("
-            UPDATE article SET title = :title, content = :content WHERE id = :id
+            UPDATE article SET title = :title, content = :content, image = :name WHERE id = :id
         ");
 
         $stm->bindValue(':title', $_POST['title']);
         $stm->bindValue(':content', $_POST['content']);
         $stm->bindValue(':id', $id);
+        $stm->bindValue(':name', $name);
 
         return $stm->execute();
     }

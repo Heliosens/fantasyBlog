@@ -5,7 +5,7 @@
         </div>
         <div>
             <h2>Utilisateur</h2>
-<!--            user information          -->
+            <!--            current user information          -->
             <div>
                 <p>Email : <?=$data['user']->getEmail()?></p>
                 <p>Roles :
@@ -16,6 +16,24 @@
                     }
                     ?>
                 </p>
+            </div>
+            <div>
+                <h3>Mes articles</h3>
+                <!--            current user articles list          -->
+                <div class="frameList">
+                    <?php
+                    foreach ($data['artId'] as $art){ ?>
+                        <div class="flex">
+                            <a href="index.php?p=home&o=art&id=<?=$art->getId()?>"><?=$art->getTitle()?></a>
+                            <div>
+                                <a href="index.php?p=article&o=delete&id=<?=$art->getId()?>">suppr</a>
+                                <a href="index.php?p=article&o=update&id=<?=$art->getId()?>">mettre à jour</a>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
             <div>
                 <h3>Mes commentaires</h3>
@@ -44,28 +62,10 @@
         if($data['admin']){?>
         <div>
             <h2>Administrateur</h2>
-            <div>
-                <h3>Mes articles</h3>
-                <!--            current user articles list          -->
-                <div class="frameList">
-                    <?php
-                    foreach ($data['artId'] as $art){ ?>
-                        <div class="flex">
-                            <a href="index.php?p=home&o=art&id=<?=$art->getId()?>"><?=$art->getTitle()?></a>
-                            <div>
-                                <a href="index.php?p=article&o=delete&id=<?=$art->getId()?>">suppr</a>
-                                <a href="index.php?p=article&o=update&id=<?=$art->getId()?>">mettre à jour</a>
-                            </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </div>
             <div class="flex">
-                <a id="button" href="index.php?p=article&o=form">Ajouter un article</a>
-                <a id="button" href="index.php?p=user&o=list">Liste des utilisateurs</a>
-                <a id="button" href="index.php?p=article&o=list">Liste des articles</a>
+                <a class="button" href="index.php?p=article&o=form">Ajouter un article</a>
+                <a class="button" href="index.php?p=user&o=list">Liste des utilisateurs</a>
+                <a class="button" href="index.php?p=article&o=list">Liste des articles</a>
             </div>
         </div>
         <?php

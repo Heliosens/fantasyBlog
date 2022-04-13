@@ -23,6 +23,7 @@
                 <a href="/index.php?p=form&o=register">Inscription</a>
             <?php
                 echo isset($_SESSION['error']) ? '<div id="error">' . $_SESSION['error'] . '</div>' : null;
+                $_SESSION['error'] = null;
             }
             ?>
         </div>

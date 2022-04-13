@@ -87,7 +87,7 @@ class FormController extends Controller
                 $_SESSION['error'] = "Email et/ou mot de passe incorrect";
             }
             else {
-                // check if mail existe
+                // check if mail not exist
                 if(!UserManager::isAlreadyMail($mail)){
                     $_SESSION['error'] = "Email et/ou mot de passe incorrect";
                 }
@@ -107,7 +107,7 @@ class FormController extends Controller
                             }
                         }
                         else {
-                            $_SESSION['error'] = "Pseudo ou mot de passe incorrect";
+                            $_SESSION['error'] = "Email et/ou mot de passe incorrect";
                         }
                     }
                 }

@@ -99,26 +99,26 @@ class ArticleController extends Controller
                 ->setContent($content)
                 ;
 
-            if(isset($_FILES['artImage']) && $_FILES['artImage']['error'] === 0){
-                unlink("upload/" . $name);
-                $maxSize = 3 * 1024 * 1024; // = 3 Mo
-                if((int)$_FILES['artImage']['size'] <= $maxSize){
-                    $ext = pathinfo($_FILES['artImage']['name'], PATHINFO_EXTENSION);   // file extension
-                    $name = $this->createRandomName() . "." . $ext;
-                    $article->setImage($name);
-                    $tmp_name = $_FILES['artImage']['tmp_name'];    // image temporary name
-                    move_uploaded_file($tmp_name, 'upload/' . $name);
-                }
-                else{
-                    $_SESSION['error'] = "L'image est trop grande";
+            if(isset($_FILES['artImage']) && strlen($_FILES['artImage']['name']) > 0) {
+                if ($_FILES['artImage']['error'] === 0) {
+                    unlink("upload/" . $name);
+                    $maxSize = 3 * 1024 * 1024; // = 3 Mo
+                    if ((int)$_FILES['artImage']['size'] <= $maxSize) {
+                        $ext = pathinfo($_FILES['artImage']['name'], PATHINFO_EXTENSION);   // file extension
+                        $name = $this->createRandomName() . "." . $ext;
+                        $article->setImage($name);
+                        $tmp_name = $_FILES['artImage']['tmp_name'];    // image temporary name
+                        move_uploaded_file($tmp_name, 'upload/' . $name);
+                    } else {
+                        $_SESSION['error'] = "L'image est trop grande";
+                        $this->render('addArticle', [ArticleManager::getArtById($id)]);
+                        exit();
+                    }
+                } else {
+                    $_SESSION['error'] = "erreur lors du chargement de l'image";
                     $this->render('addArticle', [ArticleManager::getArtById($id)]);
                     exit();
                 }
-            }
-            else{
-                $_SESSION['error'] = "erreur lors du chargement de l'image";
-                $this->render('addArticle', [ArticleManager::getArtById($id)]);
-                exit();
             }
             ArticleManager::updateArticle($id, $name);
             header("Location: /index.php?p=home&o=art&id=$id");

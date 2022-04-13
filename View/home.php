@@ -11,10 +11,21 @@
                 </div>
                 <div>
                     <img src="/upload/<?= $item['article']->getImage() ?>" alt="article illustration">
+
                 </div>
             </div>
-            <div>
+            <div class="flex">
                 <span>par : <?= $item['article']->getAuthor()->getPseudo() ?></span>
+                <?php
+                if(isset($_SESSION['user']) && in_array('admin', $_SESSION['roles'])){
+                    ?>
+                <div>
+                    <a class='button' href="index.php?p=article&o=update&id=<?=$item['article']->getId()?>">modifier</a>
+                    <a class='button' href="index.php?p=article&o=delete&id=<?=$item['article']->getId()?>">supprimer</a>
+                </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <div id="frameCom">
@@ -38,17 +49,21 @@
                     <div id="userCom">
                         <span><?=$comment->getAuthor()->getPseudo()?> :</span>
                         <p><?=$comment->getContent()?></p>
-                        <?php
+
+                        <div>
+                            <?php
                             if(Controller::isAdmin() || $_SESSION['user'] === $comment->getAuthor()->getPseudo() ){?>
-                                <a href="index?p=comment&o=delete&id= <?=$comment->getId()?> ">suppr</a>
-                        <?php
+                            <a href="index?p=comment&o=delete&id= <?=$comment->getId()?> ">supprimer</a>
+                            <a href="index?p=comment&o=update&id= <?=$comment->getId()?> ">modifier</a>
+                            <?php
                             }
-                        ?>
+                            ?>
+                        </div>
                     </div>
                     <?php
                 }
             ?></div><?php
-                }
+            }
             ?>
         </div>
         <div id="separator">
