@@ -36,8 +36,8 @@ class ArticleController extends Controller
                 $maxSize = 3 * 1024 * 1024; // = 3 Mo
                 if((int)$_FILES['artImage']['size'] <= $maxSize){
                     $tmp_name = $_FILES['artImage']['tmp_name'];    // image temporary name
-                    $infos = pathinfo($tmp_name, PATHINFO_EXTENSION);   // file extension
-                    $name = $this->createRandomName() . "." . $infos;
+                    $ext = pathinfo($_FILES['artImage']['name'], PATHINFO_EXTENSION);   // file extension
+                    $name = $this->createRandomName() . "." . $ext;
                     $article->setImage($name);
                     move_uploaded_file($tmp_name, 'upload/' . $name);
                 }
@@ -52,7 +52,6 @@ class ArticleController extends Controller
 
         // send to db
         if(ArticleManager::addArticle($article)){
-            $_SESSION['success'] = "article enregistré";
             header('Location: index.php');
         }
     }
@@ -91,7 +90,37 @@ class ArticleController extends Controller
      */
     public function saveUpdate ($id){
         if(isset($_POST['button'])){
-            ArticleManager::updateArticle($id);
+            $title = $this->cleanEntries('title');
+            $content = $this->cleanEntries('content');
+            $name = ArticleManager::getArtById($id)->getImage();
+            $article = new Article();
+            $article
+                ->setTitle($title)
+                ->setContent($content)
+                ;
+
+            if(isset($_FILES['artImage']) && $_FILES['artImage']['error'] === 0){
+                unlink("upload/" . $name);
+                $maxSize = 3 * 1024 * 1024; // = 3 Mo
+                if((int)$_FILES['artImage']['size'] <= $maxSize){
+                    $ext = pathinfo($_FILES['artImage']['name'], PATHINFO_EXTENSION);   // file extension
+                    $name = $this->createRandomName() . "." . $ext;
+                    $article->setImage($name);
+                    $tmp_name = $_FILES['artImage']['tmp_name'];    // image temporary name
+                    move_uploaded_file($tmp_name, 'upload/' . $name);
+                }
+                else{
+                    $_SESSION['error'] = "L'image est trop grande";
+                    $this->render('addArticle', [ArticleManager::getArtById($id)]);
+                    exit();
+                }
+            }
+            else{
+                $_SESSION['error'] = "erreur lors du chargement de l'image";
+                $this->render('addArticle', [ArticleManager::getArtById($id)]);
+                exit();
+            }
+            ArticleManager::updateArticle($id, $name);
             header("Location: /index.php?p=home&o=art&id=$id");
         }
     }
