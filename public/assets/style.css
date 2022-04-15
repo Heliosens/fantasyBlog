@@ -33,7 +33,7 @@ header {
 }
 
 header, footer, #menu, section, #frame, .flex,
-#content, #userCom, #frame, #frame2, form, .frameList {
+#content, #userCom, #frame, form, .frameList {
     display: flex;
 }
 
@@ -71,22 +71,19 @@ section {
     margin: 0 auto;
     background-color: #cffd89;
     padding: 1rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 #frame {
     width: 100%;
     text-align: center;
     font-size: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #frame2 {
+    width: 80%;
     font-size: 1.2rem;
-}
-
-#frame2 div {
-    /*padding: .5rem;*/
 }
 
 #frame2 #title{
@@ -286,6 +283,8 @@ footer {
 
 .frameList a {
     margin: .5rem;
+    flex-basis: 33%;
+    text-align: center;
 }
 
 .flex {

@@ -8,7 +8,7 @@ class UserManager
      */
     public static function getAllUser(){
         $users = [];
-        $query = DB::conn()->query("SELECT * FROM user");
+        $query = DB::conn()->query("SELECT * FROM user ORDER BY pseudo ASC ");
         if($query){
             foreach ($query->fetchAll() as $data){
                 $users[] = (new User())
