@@ -16,6 +16,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    font-size: 1.5rem;
 }
 
 a {
@@ -76,14 +77,12 @@ section {
 #frame {
     width: 100%;
     text-align: center;
-    font-size: 1.5rem;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 #frame2 {
     width: 80%;
-    font-size: 1.2rem;
 }
 
 #frame2 #title{
@@ -117,7 +116,6 @@ article, .userProfile{
 }
 
 #frameArt {
-    font-size: 1.5rem;
     background-color: #ffffff;
     padding: 1rem;
     border: 1px solid green;
@@ -190,7 +188,6 @@ form {
 footer {
     padding: 1rem 0;
     background: #cffd89;
-    font-size: 1.5rem;
 }
 
  /* form */
@@ -216,7 +213,6 @@ footer {
 }
 
 #title {
-    font-size: 1.5rem;
     padding: 2rem;
     justify-content: center;
     flex-basis: 100%;
@@ -230,7 +226,6 @@ footer {
     width: 100%;
     padding: 1vh 0;
     background: #cffd89;
-    font-size: 1.2rem;
     box-shadow: #008000c0 0 5px 5px;
 }
 
@@ -239,7 +234,6 @@ footer {
 .userProfile {
     justify-content: space-between;
     align-items: center;
-    font-size: 1.2rem;
     flex-wrap: wrap;
 }
 

@@ -8,7 +8,7 @@
             if($data['type'] === 'utilisateurs'){
                 foreach ($data['user'] as $item){?>
                     <div class="flex">
-                        <a href=""><?=$item->getPseudo()?></a>
+                        <a href="index.php?p=user&o=profile&id=<?=$item->getId()?>"><?=$item->getPseudo()?></a>
                         <a href="index.php?p=user&o=delete&id=<?=$item->getId()?>">suppr</a>
                         <a href="index.php?p=user&o=update&id=<?=$item->getId()?>">mettre à jour le rôle</a>
                     </div>

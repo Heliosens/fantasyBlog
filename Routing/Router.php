@@ -59,7 +59,7 @@ class Router
         $ctrl = new UserController();
         switch ($option){
             case 'profile':
-                $ctrl->displayProfile();
+                $ctrl->displayProfile($id);
                 break;
             case 'list':
                 $ctrl->displayList();

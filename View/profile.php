@@ -43,7 +43,7 @@
                     foreach ($data['comm'] as $comment){ ?>
                     <div>
                         <div class="flex">
-                            <span><?=$comment->getArticle()->getTitle()?></span>
+                            <a href="index.php?p=home&o=art&id=<?=$comment->getArticle()->getId()?>"><?=$comment->getArticle()->getTitle()?></a>
                             <div>
                                 <a href="index?p=comment&o=delete&id=<?=$comment->getId()?>">suppr</a>
                                 <a href="index?p=comment&o=update&id=<?=$comment->getId()?>">mettre à jour</a>

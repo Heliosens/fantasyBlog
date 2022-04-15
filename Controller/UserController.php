@@ -5,13 +5,14 @@ class UserController extends Controller
 {
     /**
      * show user data
+     * @param $id
      */
-    public function displayProfile(){
+    public function displayProfile($id){
         $data = [
-            'user' => UserManager::getUserById($_SESSION['id']),
+            'user' => UserManager::getUserById($id),
             'admin' => $this->isAdmin(),
-            'artId' => ArticleManager::getArtList($_SESSION['id']),
-            'comm' => CommentManager::commentByUser($_SESSION['id'])
+            'artId' => ArticleManager::getArtList($id),
+            'comm' => CommentManager::commentByUser($id)
         ];
         $this->render('profile', $data);
     }
