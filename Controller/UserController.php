@@ -27,4 +27,14 @@ class UserController extends Controller
         $this->render('list', $data);
     }
 
+    /**
+     * @param $id
+     */
+    public function delUser($id)
+    {
+        if(UserManager::deleteUserById($id)){
+            $referer = $_SERVER['HTTP_REFERER'];
+            header("Location: $referer");
+        }
+    }
 }

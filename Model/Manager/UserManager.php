@@ -113,4 +113,13 @@ class UserManager
         }
         return $user;
     }
+
+    /**
+     * @param $id
+     * @return false|int
+     */
+    public static function deleteUserById ($id){
+        $sql = "DELETE FROM user WHERE id = $id";
+        return DB::conn()->exec($sql);
+    }
 }
