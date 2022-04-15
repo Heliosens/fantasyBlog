@@ -9,8 +9,17 @@
                 foreach ($data['user'] as $item){?>
                     <div class="flex">
                         <a href="index.php?p=user&o=profile&id=<?=$item->getId()?>"><?=$item->getPseudo()?></a>
+                        <?php
+                        if(count($item->getRoles()) > 1){ ?>
+                        <span>administrateur</span>
+                        <?php
+                        }
+                        else { ?>
+                            <span>utilisateur</span>
+                            <?php
+                        }
+                        ?>
                         <a href="index.php?p=user&o=delete&id=<?=$item->getId()?>">suppr</a>
-                        <a href="index.php?p=user&o=update&id=<?=$item->getId()?>">mettre à jour le rôle</a>
                     </div>
                     <?php
                 }
