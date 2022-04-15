@@ -52,10 +52,14 @@
 
                         <div>
                             <?php
-                            if(Controller::isAdmin() || $_SESSION['user'] === $comment->getAuthor()->getPseudo() ){?>
+                            if(Controller::isAdmin() && $_SESSION['user'] !== $comment->getAuthor()->getPseudo()){?>
                             <a href="index?p=comment&o=delete&id= <?=$comment->getId()?> ">supprimer</a>
-                            <a href="index?p=comment&o=update&id= <?=$comment->getId()?> ">modifier</a>
                             <?php
+                            }
+                            if($_SESSION['user'] === $comment->getAuthor()->getPseudo() ){?>
+                                <a href="index?p=comment&o=delete&id= <?=$comment->getId()?> ">supprimer</a>
+                                <a href="index?p=comment&o=update&id= <?=$comment->getId()?> ">modifier</a>
+                                <?php
                             }
                             ?>
                         </div>
