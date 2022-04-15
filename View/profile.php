@@ -8,14 +8,20 @@
             <!--            current user information          -->
             <div>
                 <p>Email : <?=$data['user']->getEmail()?></p>
-                <p>Roles :
+                <div>
                     <?php
-                    $roles = $data['user']->getRoles();
-                    foreach ($roles as $item){
-                        echo '<span>' . $item->getRoleName() . ' </span>';
+                    if(count($data['user']->getRoles()) > 1){ ?>
+                        <span>Rôle administrateur</span>
+                        <a href="index.php?p=user&o=user&id=<?=$data['user']->getId()?>">Supprimer ce rôle</a>
+                    <?php
+                    }
+                    else { ?>
+                        <span>Rôle utilisateur</span>
+                        <a href="index.php?p=user&o=admin&id=<?=$data['user']->getId()?>">ajouter le rôle administrateur</a>
+                        <?php
                     }
                     ?>
-                </p>
+                </div>
             </div>
             <div>
                 <h3>Mes articles</h3>
@@ -43,7 +49,9 @@
                     foreach ($data['comm'] as $comment){ ?>
                     <div>
                         <div class="flex">
-                            <a href="index.php?p=home&o=art&id=<?=$comment->getArticle()->getId()?>"><?=$comment->getArticle()->getTitle()?></a>
+                            <a href="index.php?p=home&o=art&id=<?=$comment->getArticle()->getId()?>">
+                                <?=$comment->getArticle()->getTitle()?>
+                            </a>
                             <div>
                                 <a href="index?p=comment&o=delete&id=<?=$comment->getId()?>">suppr</a>
                                 <a href="index?p=comment&o=update&id=<?=$comment->getId()?>">mettre à jour</a>
@@ -70,6 +78,5 @@
         <?php
         }
         ?>
-        <a id="frameLogo" href="index.php">Accueil</a>
     </div>
 </section>
