@@ -48,7 +48,7 @@ class CommentManager
      */
     public static function commentByUser ($user){
         $comments = [];
-        $query = DB::conn()->query("SELECT * FROM comment WHERE author_fk = $user");
+        $query = DB::conn()->query("SELECT * FROM comment WHERE author_fk = $user ORDER BY article_fk DESC");
         if($query){
             // need article
             foreach ($query->fetchAll() as $data){
