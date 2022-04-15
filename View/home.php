@@ -17,7 +17,8 @@
             <div class="flex">
                 <span>par : <?= $item['article']->getAuthor()->getPseudo() ?></span>
                 <?php
-                if(isset($_SESSION['user']) && in_array('admin', $_SESSION['roles'])){
+                if(isset($_SESSION['user']) && in_array('admin', $_SESSION['roles']) ||
+                    isset($_SESSION['user']) && $_SESSION['user'] === $item['article']->getAuthor()->getPseudo()){
                     ?>
                 <div>
                     <a class='button' href="index.php?p=article&o=update&id=<?=$item['article']->getId()?>">modifier</a>
