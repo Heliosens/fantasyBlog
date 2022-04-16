@@ -37,4 +37,30 @@ class UserController extends Controller
             header("Location: $referer");
         }
     }
+
+    /**
+     * @param $id
+     */
+    public function adminToUser ($id){
+        if(UserManager::getAdmin()["count(*)"] >= 2 ){
+            RolesManager::delAdminRole($id);
+        }
+        else{
+            $_SESSION['error'] = "impossible de supprimer l'administrateur";
+        }
+        var_dump($_SESSION);
+        $referer = $_SERVER['HTTP_REFERER'];
+        header("Location: $referer");
+    }
+
+    /**
+     * @param $id
+     */
+    public function userToAdmin ($id){
+        if (RolesManager::addAdminRole($id)){
+            $referer = $_SERVER['HTTP_REFERER'];
+            header("Location: $referer");
+        }
+    }
+
 }

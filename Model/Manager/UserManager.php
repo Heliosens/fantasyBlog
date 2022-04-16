@@ -47,14 +47,6 @@ class UserManager
     }
 
     /**
-     * @param $id
-     * @return false|PDOStatement
-     */
-    public function getUserNameById($id){
-        return DB::conn()->query("SELECT pseudo FROM user WHERE id = $id");
-    }
-
-    /**
      * @param User $user
      * @return bool
      */
@@ -71,10 +63,9 @@ class UserManager
         $result = $stm->execute();
         $user->setId(DB::conn()->lastInsertId());
         if($result){
-            $role = RolesManager::getRole('user');
             $addUserRole = DB::conn()->exec("
                 INSERT INTO user_role (user_fk, role_fk)
-                VALUES (" . $user->getId() . ", " . $role->getId() . ")
+                VALUES (" . $user->getId() . ", 2)
             ");
         }
         return $result && $addUserRole;
@@ -122,4 +113,17 @@ class UserManager
         $sql = "DELETE FROM user WHERE id = $id";
         return DB::conn()->exec($sql);
     }
+
+
+    /**
+     * count nbr of admin (role_fk = 1)
+     * @return mixed
+     */
+    public static function getAdmin (){
+        $query = DB::conn()->query("
+            SELECT count(*) FROM user WHERE id IN (SELECT user_fk FROM user_role WHERE role_fk = 1)
+        ");
+        return $query->fetch();
+    }
+
 }

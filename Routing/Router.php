@@ -67,6 +67,12 @@ class Router
             case 'delete':
                 $ctrl->delUser($id);
                 break;
+            case 'user':
+                $ctrl->adminToUser($id);
+                break;
+            case 'admin':
+                $ctrl->userToAdmin($id);
+                break;
         }
     }
 

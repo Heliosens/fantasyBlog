@@ -6,46 +6,57 @@
         <div>
             <h2>Utilisateur</h2>
             <!--            current user information          -->
+            <div class="flex">
+                <span>Email : <?=$data['user']->getEmail()?></span>
+            </div>
             <div>
-                <p>Email : <?=$data['user']->getEmail()?></p>
+                <div class="flex">
+                    <span>Rôle :
+                <?php
+                //  display role of user profile displayed
+                echo count($data['user']->getRoles()) > 1 ? 'administrateur</span>' : 'Rôle utilisateur</span>';
+                // check if role of current user is admin
+                if(in_array('admin', $_SESSION['roles']) && count($data['user']->getRoles()) > 1 ){ ?>
+                    <a href="index.php?p=user&o=user&id=<?=$data['user']->getId()?>">Supprimer ce rôle</a>
+                    <?php
+                }
+                else { ?>
+                    <a href="index.php?p=user&o=admin&id=<?=$data['user']->getId()?>"> Définir comme administrateur</a>
+                    <?php
+                }
+                ?>
+
+                </div>
+            </div>
+            <?php
+            if(count($data['artId']) > 0){ ?>
                 <div>
-                    <?php
-                    if(count($data['user']->getRoles()) > 1){ ?>
-                        <span>Rôle administrateur</span>
-                        <a href="index.php?p=user&o=user&id=<?=$data['user']->getId()?>">Supprimer ce rôle</a>
-                    <?php
-                    }
-                    else { ?>
-                        <span>Rôle utilisateur</span>
-                        <a href="index.php?p=user&o=admin&id=<?=$data['user']->getId()?>">ajouter le rôle administrateur</a>
+                    <h3>Mes articles</h3>
+                    <!--            current user articles list          -->
+                    <div class="frameList">
                         <?php
-                    }
-                    ?>
-                </div>
-            </div>
-            <div>
-                <h3>Mes articles</h3>
-                <!--            current user articles list          -->
-                <div class="frameList">
-                    <?php
-                    foreach ($data['artId'] as $art){ ?>
-                        <div class="flex">
-                            <a href="index.php?p=home&o=art&id=<?=$art->getId()?>"><?=$art->getTitle()?></a>
-                            <div>
-                                <a href="index.php?p=article&o=delete&id=<?=$art->getId()?>">suppr</a>
-                                <a href="index.php?p=article&o=update&id=<?=$art->getId()?>">mettre à jour</a>
+                        foreach ($data['artId'] as $art){ ?>
+                            <div class="flex">
+                                <a href="index.php?p=home&o=art&id=<?=$art->getId()?>"><?=$art->getTitle()?></a>
+                                <div>
+                                    <a href="index.php?p=article&o=delete&id=<?=$art->getId()?>">suppr</a>
+                                    <a href="index.php?p=article&o=update&id=<?=$art->getId()?>">mettre à jour</a>
+                                </div>
                             </div>
-                        </div>
-                        <?php
-                    }
-                    ?>
+                            <?php
+                            }
+                            ?>
+                    </div>
                 </div>
-            </div>
+            <?php
+            }
+            if(count($data['comm']) > 0){ ?>
             <div>
                 <h3>Mes commentaires</h3>
-<!--            current user comment list          -->
+                <!--            current user comment list          -->
                 <div class="frameList">
                     <?php
+                    }
                     foreach ($data['comm'] as $comment){ ?>
                     <div>
                         <div class="flex">
@@ -57,7 +68,6 @@
                                 <a href="index?p=comment&o=update&id=<?=$comment->getId()?>">mettre à jour</a>
                             </div>
                         </div>
-
                     </div>
                     <?php
                     }

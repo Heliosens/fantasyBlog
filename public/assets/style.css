@@ -269,7 +269,6 @@ footer {
 }
 
 .frameList {
-    min-height: 20vh;
     max-height: 55vh;
     overflow: auto;
     flex-direction: column;
