@@ -40,7 +40,6 @@ class UserManager
             ->setId($data['id'])
             ->setPseudo($data['pseudo'])
             ->setEmail($data['email'])
-            ->setPassword($data['password'])
             ;
         $roles = RolesManager::getUserRoles($user);
         return $user->setRoles($roles);

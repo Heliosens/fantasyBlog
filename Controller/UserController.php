@@ -10,7 +10,6 @@ class UserController extends Controller
     public function displayProfile($id){
         $data = [
             'user' => UserManager::getUserById($id),
-            'admin' => $this->isAdmin(),
             'artId' => ArticleManager::getArtList($id),
             'comm' => CommentManager::commentByUser($id)
         ];
