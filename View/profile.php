@@ -3,9 +3,11 @@
         <div id="title">
             <h2>Profil <?=$data['user']->getPseudo()?></h2>
         </div>
+
         <div>
             <h2>Utilisateur</h2>
             <!--            current user information          -->
+            
             <div class="flex">
                 <span>Email : <?=$data['user']->getEmail()?></span>
             </div>
@@ -16,22 +18,23 @@
                 //  display role of user profile displayed
                 echo count($data['user']->getRoles()) > 1 ? 'administrateur</span>' : 'Rôle utilisateur</span>';
                 // check if role of current user is admin
-                if(in_array('admin', $_SESSION['roles']) && count($data['user']->getRoles()) > 1 ){ ?>
-                    <a href="index.php?p=user&o=user&id=<?=$data['user']->getId()?>">Supprimer ce rôle</a>
-                    <?php
-                }
-                else { ?>
-                    <a href="index.php?p=user&o=admin&id=<?=$data['user']->getId()?>"> Définir comme administrateur</a>
-                    <?php
+                if((in_array('admin', $_SESSION['roles']))){
+                    if(count($data['user']->getRoles()) > 1 ){ ?>
+                        <a href="index.php?p=user&o=user&id=<?=$data['user']->getId()?>">Supprimer ce rôle</a>
+                        <?php
+                    }
+                    else { ?>
+                        <a href="index.php?p=user&o=admin&id=<?=$data['user']->getId()?>"> Définir comme administrateur</a>
+                        <?php
+                    }
                 }
                 ?>
-
                 </div>
             </div>
             <?php
             if(count($data['artId']) > 0){ ?>
                 <div>
-                    <h3>Mes articles</h3>
+                    <h3>Articles</h3>
                     <!--            current user articles list          -->
                     <div class="frameList">
                         <?php
@@ -52,11 +55,10 @@
             }
             if(count($data['comm']) > 0){ ?>
             <div>
-                <h3>Mes commentaires</h3>
+                <h3>Commentaires</h3>
                 <!--            current user comment list          -->
                 <div class="frameList">
                     <?php
-                    }
                     foreach ($data['comm'] as $comment){ ?>
                     <div>
                         <div class="flex">
@@ -74,19 +76,25 @@
                     ?>
                 </div>
             </div>
+            <?php
+              }
+            ?>
         </div>
-        <?php
-        if($data['admin']){?>
         <div>
-            <h2>Administrateur</h2>
-            <div class="flex">
-                <a class="button" href="index.php?p=article&o=form">Ajouter un article</a>
-                <a class="button" href="index.php?p=user&o=list">Liste des utilisateurs</a>
-                <a class="button" href="index.php?p=article&o=list">Liste des articles</a>
-            </div>
+            <?php
+            if((in_array('admin', $_SESSION['roles']))){ ?>
+                <div>
+                    <h2>Administrateur</h2>
+                    <div class="flex">
+                        <a class="button" href="index.php?p=article&o=form">Ajouter un article</a>
+                        <a class="button" href="index.php?p=user&o=list">Liste des utilisateurs</a>
+                        <a class="button" href="index.php?p=article&o=list">Liste des articles</a>
+                        <a class="button" href="index.php?p=user&o=delete&id=<?=$data['user']->getId()?>">supprimer cet utilisateur</a>
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
         </div>
-        <?php
-        }
-        ?>
     </div>
 </section>
