@@ -16,7 +16,6 @@ class FormController extends Controller
      */
     public function checkRegisterForm (){
         if(isset($_POST['button'])){
-            $result = [];
             $pseudo = $this->cleanEntries('pseudo');
             $mail = $this->cleanEntries('email');
             $password = $_POST['password'];
@@ -24,28 +23,29 @@ class FormController extends Controller
 
             $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
             if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
-                $result[] = "L'adresse email n'est pas valide";
+                $_SESSION['error'] = "L'adresse email n'est pas valide";
             }
 
             if(strlen($pseudo) < 2 ) {
-                $result[] = "Le pseudo n'est pas assez long";
+                $_SESSION['error'] = "Le pseudo n'est pas assez long";
             }
 
             if($password !== $passwordBis){
-                $result[] = "Les mots de passe ne sont pas identiques";
+                $_SESSION['error'] = "Les mots de passe ne sont pas identiques";
             }
 
             if(!preg_match('/^(?=.*[!+@#$%^&*-\])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/', $password)) {
                 // Le password ne correspond pas au critère.
-                $result[] = "Le password ne correpsond pas au critère";
+                $_SESSION['error'] = "Le password ne correpsond pas au critère";
             }
 
-            if(count($result) > 0){
-                $_SESSION['error'] = $result;
+            if($_SESSION['error']){
+                header('Location: index.php');
             }
             else {
                 $user = new User();
                 $role = RolesManager::getRole('user');
+
                 $user->setPseudo($pseudo)
                     ->setEmail($mail)
                     ->setPassword(password_hash($password, PASSWORD_DEFAULT))
@@ -57,6 +57,7 @@ class FormController extends Controller
                 }
                 else {
                     UserManager::addUser($user);
+
                     if($user->getId() !== null){
                         $_SESSION['success'] = "Votre compte a bien été créé";
                         $_SESSION['error'] = [];
@@ -97,6 +98,7 @@ class FormController extends Controller
                         $_SESSION['error'] = "Email et/ou mot de passe incorrect";
                     }
                     else{
+                        // check password
                         if(password_verify($password, $user->getPassword())){
                             $_SESSION['user'] = $user->getPseudo();
                             $_SESSION['id'] = $user->getId();
@@ -115,5 +117,4 @@ class FormController extends Controller
         }
         header('Location: index.php');
     }
-
 }
