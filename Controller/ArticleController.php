@@ -43,10 +43,12 @@ class ArticleController extends Controller
                 }
                 else{
                     $_SESSION['error'] = "L'image est trop grande";
+                    header("Location: index.php?p=article&o=form");
                 }
             }
             else{
                 $_SESSION['error'] = "erreur lors du chargement de l'image";
+                header("Location: index.php?p=article&o=form");
             }
         }
 
